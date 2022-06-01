@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using PanGainsWebApp.Data;
 using PanGainsWebApp.Models;
 
-namespace PanGainsWebApp.Controllers.API_Controllers
+namespace PanGainsWebApp.Controllers
 {
     public class AccountsController : Controller
     {
@@ -22,9 +22,9 @@ namespace PanGainsWebApp.Controllers.API_Controllers
         // GET: Accounts
         public async Task<IActionResult> Index()
         {
-              return _context.Account != null ? 
-                          View(await _context.Account.ToListAsync()) :
-                          Problem("Entity set 'PanGainsWebAppContext.Account'  is null.");
+            return _context.Account != null ?
+                        View(await _context.Account.ToListAsync()) :
+                        Problem("Entity set 'PanGainsWebAppContext.Account'  is null.");
         }
 
         // GET: Accounts/Details/5
@@ -146,14 +146,14 @@ namespace PanGainsWebApp.Controllers.API_Controllers
             {
                 _context.Account.Remove(account);
             }
-            
+
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
         private bool AccountExists(int id)
         {
-          return (_context.Account?.Any(e => e.AccountID == id)).GetValueOrDefault();
+            return (_context.Account?.Any(e => e.AccountID == id)).GetValueOrDefault();
         }
     }
 }
