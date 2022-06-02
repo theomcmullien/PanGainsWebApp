@@ -8,8 +8,20 @@
         <img class="img-fluid" src="/img/login/Logo.png" />
     </div>
     <div class="text-center">
-        <form autocomplete="off">
-            
+        <form asp-controller="Login" asp-action="Index" autocomplete="off">
+
+
+            <div class="pb-4 pt-2 row g-0">
+                <div class="form-floating col pe-4">
+                    <input type="text" class="form-control" id="Username" name="Username" placeholder="Username">
+                    <label for="Username">Username</label>
+                </div>
+                <div class="form-floating col">
+                    <input type="password" class="form-control" id="Password" name="Password" placeholder="Name">
+                    <label for="Password">Password</label>
+                </div>
+            </div>
+
             <button class="btn" type="submit">Log In</button>
         </form>
     </div>

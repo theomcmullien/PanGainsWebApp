@@ -13,9 +13,16 @@ namespace PanGainsWebApp.Controllers
             _logger = logger;
         }
 
-        public IActionResult Index()
+        public IActionResult Index(string username, string password)
         {
-            return View();
+            if (username == "admin" && password == "admin")
+            {
+                return View("/Views/Home/Index.cshtml");
+            }
+            else
+            {
+                return View();
+            }
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
