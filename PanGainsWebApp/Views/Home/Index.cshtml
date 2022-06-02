@@ -3,7 +3,14 @@
     ViewData["Title"] = "Home Page";
 }
 
+@*<div class="text-center">
+    <h1>@Model.AccountModel[0].Firstname</h1>
+</div>*@
+
+
 <div class="text-center">
-    <h1 class="display-4">@Model.AccountModel[0].Firstname</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    @foreach (var item in Model.FolderModel)
+    {
+        <p>@Html.DisplayFor(modelItem => item.FolderName)</p>
+    }
 </div>
