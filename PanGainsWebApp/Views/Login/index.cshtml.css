@@ -1,1 +1,36 @@
-﻿
+﻿.bg {
+    background-image: url("img/login/Background.png");
+    height: 100vh;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.logo {
+    padding-top: 5%;
+}
+
+button {
+    margin: 10rem;
+    padding: 0.7rem 7rem;
+    background: none;
+    border: 0.1rem solid #ffffff;
+    color: white;
+    font-size: 2rem;
+    /*border-radius: 0.5rem;*/
+    cursor: pointer;
+    background: #14181D;
+    transition: all 0.25s ease-in;
+    transition: all 0.125s ease-out;
+}
+
+button:hover {
+  background: #25292E;
+  color: white;
+  padding: 0.7rem 8rem;
+}
+
+button:focus {
+  background: #363A3F;
+  color: white;
+}
