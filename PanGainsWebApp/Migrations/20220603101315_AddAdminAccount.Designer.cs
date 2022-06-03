@@ -11,8 +11,8 @@ using PanGainsWebApp.Data;
 namespace PanGainsWebApp.Migrations
 {
     [DbContext(typeof(PanGainsWebAppContext))]
-    [Migration("20220602103447_Init2")]
-    partial class Init2
+    [Migration("20220603101315_AddAdminAccount")]
+    partial class AddAdminAccount
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -75,6 +75,23 @@ namespace PanGainsWebApp.Migrations
                     b.HasKey("AccountID");
 
                     b.ToTable("Account");
+                });
+
+            modelBuilder.Entity("PanGainsWebApp.Models.AdminAccount", b =>
+                {
+                    b.Property<int>("AdminAccountID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<string>("Password")
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("Username")
+                        .HasColumnType("longtext");
+
+                    b.HasKey("AdminAccountID");
+
+                    b.ToTable("AdminAccount");
                 });
 
             modelBuilder.Entity("PanGainsWebApp.Models.ChallengeStats", b =>

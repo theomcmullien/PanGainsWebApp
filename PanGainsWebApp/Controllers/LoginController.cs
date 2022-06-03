@@ -19,9 +19,16 @@ namespace PanGainsWebApp.Controllers
 
         public async Task<IActionResult> Index(string username, string password)
         {
-
-
-            if (username == "admin" && password == "admin")
+            bool IsAdmin = false;
+            if (username != null)
+            {
+                foreach (AdminAccount a in await _context.AdminAccount.ToListAsync())
+                {
+                    if (a.Username.ToLower() == username.ToLower() && a.Password.ToLower() == password.ToLower()) IsAdmin = true;
+                }
+            }
+            
+            if (IsAdmin)
             {
                 var model = new ListModel();
                 model.AccountModel = await _context.Account.ToListAsync();

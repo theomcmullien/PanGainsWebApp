@@ -75,6 +75,23 @@ namespace PanGainsWebApp.Migrations
                     b.ToTable("Account");
                 });
 
+            modelBuilder.Entity("PanGainsWebApp.Models.AdminAccount", b =>
+                {
+                    b.Property<int>("AdminAccountID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<string>("Password")
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("Username")
+                        .HasColumnType("longtext");
+
+                    b.HasKey("AdminAccountID");
+
+                    b.ToTable("AdminAccount");
+                });
+
             modelBuilder.Entity("PanGainsWebApp.Models.ChallengeStats", b =>
                 {
                     b.Property<int>("ChallengeStatsID")

@@ -25,6 +25,7 @@ namespace PanGainsWebApp.Data
         public DbSet<Social>? Social { get; set; }
         public DbSet<Statistics>? Statistics { get; set; }
         public DbSet<YourExercise>? YourExercise { get; set; }
+        public DbSet<PanGainsWebApp.Models.AdminAccount>? AdminAccount { get; set; }
 
     }
 }
