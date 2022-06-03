@@ -4,21 +4,23 @@
 }
 
 <div class="bg">
-    <div class="text-center logo">
+    <div class="logo">
         <img class="img-fluid" src="/img/login/Logo.png" />
     </div>
     <div class="text-center">
         <form asp-controller="Login" asp-action="Index" autocomplete="off">
 
 
-            <div class="pb-4 pt-2 row g-0">
-                <div class="form-floating col pe-4">
-                    <input type="text" class="form-control" id="Username" name="Username" placeholder="Username">
-                    <label for="Username">Username</label>
+            <div class="form col g-0">
+                <div class="center-block col pb-5">
+                    <label for="Username" class="text-start">Username</label>
+                    <input type="text" class="center-block" id="Username" name="Username">
+                    
                 </div>
-                <div class="form-floating col">
-                    <input type="password" class="form-control" id="Password" name="Password" placeholder="Name">
-                    <label for="Password">Password</label>
+                <div class="col">
+                    <label for="Password" class="text-start">Password</label>
+                    <input type="password" class="center-block" id="Password" name="Password">
+                    
                 </div>
             </div>
 

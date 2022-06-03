@@ -19,6 +19,8 @@ namespace PanGainsWebApp.Controllers
 
         public async Task<IActionResult> Index(string username, string password)
         {
+
+
             if (username == "admin" && password == "admin")
             {
                 var model = new ListModel();
