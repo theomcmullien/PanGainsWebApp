@@ -2,6 +2,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: Leelawadee;
 }
 
 html {
@@ -18,3 +19,38 @@ body, html {
     height: 100%;
 }
 
+.nav-item a {
+    display: inline-block;
+    text-decoration: none;
+    color: white;
+    letter-spacing: 1px;
+    padding-left: 20px;
+}
+
+.sidenav {
+    background-color: #14181D;
+    width: 250px;
+    height: 250px;
+    position: fixed;
+    top: 75px;
+    left: 0;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.sidenav a {
+    display: inline-block;
+    text-decoration: none;
+    padding: 5px 15px;
+    font-size: 20px;
+    font-weight: bold;
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding-left: 20px;
+}
+
+.sidenav a:hover {
+    background-color: #0E1014;
+}

@@ -11,26 +11,34 @@
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark nav-bg border-bottom box-shadow mb-3 pt-4 pb-4">
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark nav-bg border-b box-shadow mb-3 pt-4 pb-4">
             <div class="container-fluid">
                 <div class="ms-4">
-                    <img class="img-fluid" src="/img/nav/NavLogo.png" />
+                    <a asp-area="" asp-controller="Home" asp-action="Index"><img class="img-fluid" src="/img/nav/AdminPortal.png" /></a>
                 </div>
-                
+
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
+                    <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index"></a>
+                            <a asp-area="" asp-controller="Login" asp-action="Index">Logout</a>
                         </li>
                     </ul>
                 </div>
             </div>
         </nav>
     </header>
+
+    <div class="sidenav border-r">
+        <a asp-area="" asp-controller="Home" asp-action="Index">Test</a>
+        <a asp-area="" asp-controller="Home" asp-action="Index">Test</a>
+        <a asp-area="" asp-controller="Home" asp-action="Index">Test</a>
+        <a asp-area="" asp-controller="Home" asp-action="Index">Test</a>
+        <a asp-area="" asp-controller="Home" asp-action="Index">Test</a>
+    </div>
 
     <main role="main">
         @RenderBody()

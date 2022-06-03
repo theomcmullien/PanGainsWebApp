@@ -14,6 +14,8 @@
         public IList<Social> SocialModel { get; set; }
         public IList<Statistics> StatisticsModel { get; set; }
         public IList<YourExercise> YourExerciseModel { get; set; }
+        public string Username { get; set; }
+        public string Password { get; set; }
 
     }
 }
