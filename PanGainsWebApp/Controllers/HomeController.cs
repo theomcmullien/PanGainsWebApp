@@ -19,6 +19,7 @@ namespace PanGainsWebApp.Controllers
 
         public async Task<IActionResult> Index()
         {
+
             var model = new ListModel();
             model.AccountModel = await _context.Account.ToListAsync();
             model.ChallengeStatsModel = await _context.ChallengeStats.ToListAsync();
