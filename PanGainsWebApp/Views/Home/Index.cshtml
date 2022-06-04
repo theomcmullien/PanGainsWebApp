@@ -3,15 +3,22 @@
     ViewData["Title"] = "Dashboard";
 }
 
-<form asp-action="Index">
-    <input type="hidden" />
-    <input type="submit" value="Deleto" class="btn btn-danger" /> |
-    <a asp-action="Index">Back to List</a>
-</form>
+<div class="outside-padding10">
 
-<div class="text-white">
-    @foreach (var item in Model.SetModel)
-    {
-        <p>@Html.DisplayFor(modelItem => item.SetID)</p>
-    }
+
+    <form asp-action="Index">
+        <input type="hidden" />
+        <input type="submit" value="Deleto" class="btn btn-danger" /> |
+        <a asp-action="Index">Back to List</a>
+    </form>
+
+    <div class="text-white">
+        @foreach (var item in Model.SetModel)
+        {
+            <p>@Html.DisplayFor(modelItem => item.SetID)</p>
+        }
+    </div>
+
+
 </div>
+

@@ -3,14 +3,46 @@
     ViewData["Title"] = "Accounts";
 }
 
-<div class="text-white">
-    @{
-        List<Account> accounts = Model.AccountModel;
-        accounts.Reverse();
-        foreach (var item in accounts)
-        {
-            <p>@item.AccountID | @item.Firstname @item.Lastname | @item.AverageChallengePos</p>
-        }
-    }
-    
+<div class="table">
+    <div class="table_header">
+        <p>User Accounts</p>
+        <div>
+            <input placeholder="search by firstname..."/>
+            <button class="add_new">Search</button>
+        </div>
+    </div>
+    <div class="table_section">
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Fullname</th>
+                    <th>Email</th>
+                    <th>Type</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                @{
+                    List<Account> accounts = Model.AccountModel;
+                    accounts.Reverse();
+                    foreach (var item in accounts)
+                    {
+                        <tr>
+                            <td>@item.AccountID</td>
+                            <td>@item.Firstname @item.Lastname</td>
+                            <td>@item.Email</td>
+                            <td>@item.Type</td>
+                            <td>
+                                <button><i class="fa-solid fa-pen-to-square"></i></button>
+                                <button><i class="fa-solid fa-trash"></i></button>
+                            </td>
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+    </div>
 </div>
+
+    @* AccountID   Firstname   Lastname   Email   Title   Type*@

@@ -1,0 +1,116 @@
+﻿
+.table {
+    color: white;
+    width: 100%;
+}
+
+.table_header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+}
+
+.table_header p {
+    color: white;
+    font-weight: bold;
+    font-size: 24px;
+}
+
+.add_new {
+    margin-top: 3%;
+    margin-bottom: 3%;
+    padding: 10px 20px;
+    background: #0298cf;
+    border: 0.1rem solid white;
+    border-radius: 5px;
+    outline: none;
+    color: white;
+    cursor: pointer;
+    background: #14181D;
+    transition: all 0.25s ease-in;
+    transition: all 0.125s ease-out;
+}
+
+.add_new:hover {
+    background: #25292E;
+}
+
+.add_new:focus {
+    background: #363A3F;
+}
+
+button {
+    outline: none;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    padding: 5px 10px;
+    color: white;
+}
+
+td button:nth-child(1) {
+    background-color: #14181D;
+}
+
+td button:nth-child(2) {
+    background-color: #EA4C46;
+}
+
+input {
+    width: 400px;
+    padding: 10px 20px;
+    margin: 0 10px;
+    outline: none;
+    border: 1px solid white;
+    background-color: white;
+    border-radius: 5px;
+    color: #000000;
+}
+
+.table_section {
+    height: 700px;
+    overflow: auto;
+    border-bottom: 1px solid white;
+}
+
+table {
+    width: 100%;
+    table-layout: fixed;
+    min-width: 900px;
+    border-collapse: collapse;
+}
+
+thead th {
+    position: sticky;
+    top: 0;
+    color: white;
+    background-color: #222831;
+    border-bottom: 1px solid white;
+}
+
+th, td {
+    border-bottom: 1px solid #666666;
+    padding: 20px 20px;
+    word-break: break-all;
+    text-align: center;
+}
+
+tr:hover td {
+    color: white;
+    /*cursor: pointer;*/
+    background-color: #252A3c;
+}
+
+::-webkit-scrollbar {
+    height: 5px;
+    width: 5px;
+}
+
+::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 6px rgba(255, 255, 255, 0.7);
+}
+
+::-webkit-scrollbar-thumb {
+    box-shadow: inset 0 0 6px rgba(255, 255, 255, 0.7);
+}

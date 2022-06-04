@@ -48,6 +48,7 @@ button {
     padding: 0.7rem 7rem;
     background: none;
     border: 0.1rem solid #ffffff;
+    outline: none;
     color: white;
     font-size: 18px;
     /*border-radius: 0.5rem;*/
