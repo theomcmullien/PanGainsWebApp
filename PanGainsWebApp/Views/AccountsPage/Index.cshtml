@@ -4,8 +4,8 @@
 }
 
 <div class="text-white">
-    @foreach (var item in Model.SetModel)
+    @foreach (var item in Model.AccountModel)
     {
-        <p>@Html.DisplayFor(modelItem => item.SetID)</p>
+        <p>@item.Firstname @item.Lastname: @item.AverageChallengePos</p>
     }
 </div>
