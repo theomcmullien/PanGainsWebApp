@@ -32,7 +32,7 @@ body, html {
     width: 250px;
     height: 250px;
     position: fixed;
-    top: 75px;
+    top: 74px;
     left: 0;
     height: 100%;
     display: flex;
@@ -42,8 +42,8 @@ body, html {
 .sidenav a {
     display: inline-block;
     text-decoration: none;
-    padding: 5px 15px;
-    font-size: 20px;
+    padding: 15px 15px;
+    font-size: 16px;
     font-weight: bold;
     color: white;
     text-transform: uppercase;
@@ -53,4 +53,18 @@ body, html {
 
 .sidenav a:hover {
     background-color: #0E1014;
+}
+
+.sidenav-selected {
+    background-color: #0E1014;
+}
+
+.logout a {
+    display: inline-block;
+    text-decoration: none;
+    font-weight: bold;
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding-left: 20px;
 }

@@ -45,8 +45,16 @@ button.accept-policy {
     background-color: #0E1014;
 }
 
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+}
+
 main {
+    margin-top: 75px;
     margin-left: 250px;
     padding: 10px;
 }
-
