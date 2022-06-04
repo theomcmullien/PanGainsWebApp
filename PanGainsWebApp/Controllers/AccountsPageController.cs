@@ -33,8 +33,8 @@ namespace PanGainsWebApp.Controllers
             model.SocialModel = await _context.Social.ToListAsync();
             model.StatisticsModel = await _context.Statistics.ToListAsync();
             model.YourExerciseModel = await _context.YourExercise.ToListAsync();
-            model.Username = "Admin";
-            model.Password = "admin";
+            //model.Username = "Admin";
+            //model.Password = "admin";
             return View(model);
         }
 

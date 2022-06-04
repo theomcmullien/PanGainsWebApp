@@ -28,5 +28,6 @@ namespace PanGainsWebApp.Models
         [Required]
         public string? Type { get; set; }
         public string? Role { get; set; }
+
     }
 }

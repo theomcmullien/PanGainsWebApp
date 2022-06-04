@@ -36,47 +36,40 @@
     </header>
 
     <div class="sidenav border-r">
-        @if (ViewData["Title"] == "Dashboard")
-        {
-            <a class="sidenav-selected" asp-area="" asp-controller="Home" asp-action="Index">Dashboard</a>
+        @{
+            if (ViewData["Title"] == "Dashboard")
+            {
+                <a class="sidenav-selected" asp-area="" asp-controller="Home" asp-action="Index">Dashboard</a>
+            }
+            else
+            {
+                <a asp-area="" asp-controller="Home" asp-action="Index">Dashboard</a>
+            }
+            if (ViewData["Title"] == "Accounts")
+            {
+                <a class="sidenav-selected" asp-area="" asp-controller="AccountsPage" asp-action="Index">Accounts</a>
+            }
+            else
+            {
+                <a asp-area="" asp-controller="AccountsPage" asp-action="Index">Accounts</a> @*Individual Account Page*@
+            }
+            if (ViewData["Title"] == "Test")
+            {
+                <a class="sidenav-selected" asp-area="" asp-controller="Home" asp-action="Index">Leaderboards</a>
+            }
+            else
+            {
+                <a asp-area="" asp-controller="Home" asp-action="Index">Leaderboards</a>
+            }
+            if (ViewData["Title"] == "Test")
+            {
+                <a class="sidenav-selected" asp-area="" asp-controller="Home" asp-action="Index">Exercises</a>
+            }
+            else
+            {
+                <a asp-area="" asp-controller="Home" asp-action="Index">Exercises</a>
+            }
         }
-        else
-        {
-            <a asp-area="" asp-controller="Home" asp-action="Index">Dashboard</a>
-        }
-        @if (ViewData["Title"] == "Accounts")
-        {
-            <a class="sidenav-selected" asp-area="" asp-controller="AccountsPage" asp-action="Index">Accounts</a>
-        }
-        else
-        {
-            <a asp-area="" asp-controller="AccountsPage" asp-action="Index">Accounts</a>
-        }
-        @if (ViewData["Title"] == "Test")
-        {
-            <a class="sidenav-selected" asp-area="" asp-controller="Home" asp-action="Index">Test</a>
-        }
-        else
-        {
-            <a asp-area="" asp-controller="Home" asp-action="Index">Test</a>
-        }
-        @if (ViewData["Title"] == "Test")
-        {
-            <a class="sidenav-selected" asp-area="" asp-controller="Home" asp-action="Index">Test</a>
-        }
-        else
-        {
-            <a asp-area="" asp-controller="Home" asp-action="Index">Test</a>
-        }
-        @if (ViewData["Title"] == "Test")
-        {
-            <a class="sidenav-selected" asp-area="" asp-controller="Home" asp-action="Index">Test</a>
-        }
-        else
-        {
-            <a asp-area="" asp-controller="Home" asp-action="Index">Test</a>
-        }
-        
     </div>
 
     <main role="main">

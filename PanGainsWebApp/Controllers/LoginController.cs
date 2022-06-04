@@ -20,8 +20,8 @@ namespace PanGainsWebApp.Controllers
         public async Task<IActionResult> Index(string username, string password)
         {
             bool isAdmin = false;
-            string displayUsername = "";
-            string displayPassword = "";
+            //string displayUsername = "";
+            //string displayPassword = "";
 
             if (username != null)
             {
@@ -30,8 +30,8 @@ namespace PanGainsWebApp.Controllers
                     if (a.Username.ToLower() == username.ToLower() && a.Password.ToLower() == password.ToLower())
                     {
                         isAdmin = true;
-                        displayUsername = a.Username;
-                        displayPassword = a.Password;
+                        //displayUsername = a.Username;
+                        //displayPassword = a.Password;
                     }
                 }
             }
@@ -51,9 +51,9 @@ namespace PanGainsWebApp.Controllers
                 model.SocialModel = await _context.Social.ToListAsync();
                 model.StatisticsModel = await _context.Statistics.ToListAsync();
                 model.YourExerciseModel = await _context.YourExercise.ToListAsync();
-                model.Username = displayUsername;
-                model.Password = displayPassword;
-
+                //model.Username = displayUsername;
+                //model.Password = displayPassword;
+                
                 return View("/Views/Home/Index.cshtml", model);
             }
             else
