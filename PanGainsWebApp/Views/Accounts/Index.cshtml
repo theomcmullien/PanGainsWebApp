@@ -1,0 +1,16 @@
+﻿@model PanGainsWebApp.Models.ListModel
+@{
+    ViewData["Title"] = "Accounts";
+}
+
+<div class="text-white">
+    @{
+        List<Account> accounts = Model.AccountModel;
+        accounts.Reverse();
+        foreach (var item in accounts)
+        {
+            <p>@item.AccountID | @item.Firstname @item.Lastname | @item.AverageChallengePos</p>
+        }
+    }
+    
+</div>

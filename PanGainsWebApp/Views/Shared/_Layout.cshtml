@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/PanGainsWebApp.styles.css" asp-append-version="true" />
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
+
 </head>
 <body>
     <header>
@@ -47,11 +49,11 @@
             }
             if (ViewData["Title"] == "Accounts")
             {
-                <a class="sidenav-selected" asp-area="" asp-controller="AccountsPage" asp-action="Index">Accounts</a>
+                <a class="sidenav-selected" asp-area="" asp-controller="Accounts" asp-action="Index">Accounts</a>
             }
             else
             {
-                <a asp-area="" asp-controller="AccountsPage" asp-action="Index">Accounts</a> @*Individual Account Page*@
+                <a asp-area="" asp-controller="Accounts" asp-action="Index">Accounts</a> @*Individual Account Page*@
             }
             if (ViewData["Title"] == "Test")
             {

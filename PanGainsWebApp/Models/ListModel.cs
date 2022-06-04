@@ -2,18 +2,18 @@
 {
     public class ListModel
     {
-        public IList<Account> AccountModel { get; set; }
-        public IList<ChallengeStats> ChallengeStatsModel { get; set; }
-        public IList<CompletedWorkout> CompletedWorkoutModel { get; set; }
-        public IList<DaysWorkedOut> DaysWorkedOutModel { get; set; }
-        public IList<Exercise> ExerciseModel { get; set; }
-        public IList<Folder> FolderModel { get; set; }
-        public IList<Leaderboard> LeaderboardModel { get; set; }
-        public IList<Routine> RoutineModel { get; set; }
-        public IList<Set> SetModel { get; set; }
-        public IList<Social> SocialModel { get; set; }
-        public IList<Statistics> StatisticsModel { get; set; }
-        public IList<YourExercise> YourExerciseModel { get; set; }
+        public List<Account> AccountModel { get; set; }
+        public List<ChallengeStats> ChallengeStatsModel { get; set; }
+        public List<CompletedWorkout> CompletedWorkoutModel { get; set; }
+        public List<DaysWorkedOut> DaysWorkedOutModel { get; set; }
+        public List<Exercise> ExerciseModel { get; set; }
+        public List<Folder> FolderModel { get; set; }
+        public List<Leaderboard> LeaderboardModel { get; set; }
+        public List<Routine> RoutineModel { get; set; }
+        public List<Set> SetModel { get; set; }
+        public List<Social> SocialModel { get; set; }
+        public List<Statistics> StatisticsModel { get; set; }
+        public List<YourExercise> YourExerciseModel { get; set; }
         public string Username { get; set; }
         public string Password { get; set; }
 
