@@ -15,7 +15,7 @@ html {
 
 body {
     background-color: #222831;
-    overflow: hidden;
+    /*overflow: hidden;*/
 }
 
 /*/
@@ -71,8 +71,4 @@ body {
     color: white;
     text-transform: uppercase;
     letter-spacing: 1px;
-}
-
-::-webkit-scrollbar-track {
-    
 }
