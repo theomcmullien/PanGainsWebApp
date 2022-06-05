@@ -57,7 +57,7 @@ td button:nth-child(2) {
     background-color: #EA4C46;
 }
 
-input {
+form input {
     width: 400px;
     padding: 10px 20px;
     margin: 0 10px;

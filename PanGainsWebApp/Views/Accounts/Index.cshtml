@@ -7,8 +7,14 @@
     <div class="table_header">
         <p>User Accounts</p>
         <div>
-            <input placeholder="search by firstname..."/>
-            <button class="add_new">Search</button>
+            <form asp-controller="Accounts" asp-action="Index" method="get">
+
+                <input style="width: 400px; padding: 10px 20px; margin: 0 10px; outline: none; border: 1px solid white; background-color: white; border-radius: 5px; color: #000000;"
+                asp-for="SearchAccount" type="text" placeholder="search by firstname..."/>
+
+                <button type="submit" class="add_new">Search</button>
+            </form>
+            
         </div>
     </div>
     <div class="table_section">
@@ -34,8 +40,16 @@
                             <td>@item.Email</td>
                             <td>@item.Type</td>
                             <td>
-                                <button><i class="fa-solid fa-pen-to-square"></i></button>
-                                <button><i class="fa-solid fa-trash"></i></button>
+                                <button>
+                                    <a style="color: white" asp-action="Details" asp-route-accountID="@item.AccountID">
+                                        <i class="fa-solid fa-pen-to-square"></i>
+                                    </a>
+                                </button>
+                                <button>
+                                    <a style="color: white" asp-action="Delete" asp-route-accountID="@item.AccountID">
+                                        <i class="fa-solid fa-trash"></i>
+                                    </a>
+                                </button>
                             </td>
                         </tr>
                     }

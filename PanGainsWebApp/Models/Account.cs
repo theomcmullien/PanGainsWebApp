@@ -12,10 +12,11 @@ namespace PanGainsWebApp.Models
         public string? Lastname { get; set; }
         [Required]
         public string? Email { get; set; }
-        [Required]
-        public byte[]? PasswordHash { get; set; }
-        [Required]
-        public byte[]? PasswordSalt { get; set; }
+        public string? Password { get; set; }
+        //[Required]
+        //public byte[]? PasswordHash { get; set; }
+        //[Required]
+        //public byte[]? PasswordSalt { get; set; }
         public string? Title { get; set; }
         public string? ProfilePicture { get; set; }
         public string? Description { get; set; }

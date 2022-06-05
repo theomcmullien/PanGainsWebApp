@@ -20,42 +20,55 @@ namespace PanGainsWebApp.Controllers
         }
 
         // GET: Accounts
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string? searchAccount)
         {
+            var accountsList = await _context.Account.ToListAsync();
+            if (searchAccount != null)
+            {
+                accountsList = accountsList.Where(a => a.Firstname == searchAccount).ToList();
+            }
+
             var model = new ListModel();
-            model.AccountModel = await _context.Account.ToListAsync();
-            model.ChallengeStatsModel = await _context.ChallengeStats.ToListAsync();
-            model.CompletedWorkoutModel = await _context.CompletedWorkout.ToListAsync();
-            model.DaysWorkedOutModel = await _context.DaysWorkedOut.ToListAsync();
-            model.ExerciseModel = await _context.Exercise.ToListAsync();
-            model.FolderModel = await _context.Folder.ToListAsync();
-            model.LeaderboardModel = await _context.Leaderboard.ToListAsync();
-            model.RoutineModel = await _context.Routine.ToListAsync();
-            model.SetModel = await _context.Set.ToListAsync();
-            model.SocialModel = await _context.Social.ToListAsync();
-            model.StatisticsModel = await _context.Statistics.ToListAsync();
-            model.YourExerciseModel = await _context.YourExercise.ToListAsync();
+            model.AccountModel = accountsList;
+            //model.ChallengeStatsModel = await _context.ChallengeStats.ToListAsync();
+            //model.CompletedWorkoutModel = await _context.CompletedWorkout.ToListAsync();
+            //model.DaysWorkedOutModel = await _context.DaysWorkedOut.ToListAsync();
+            //model.ExerciseModel = await _context.Exercise.ToListAsync();
+            //model.FolderModel = await _context.Folder.ToListAsync();
+            //model.LeaderboardModel = await _context.Leaderboard.ToListAsync();
+            //model.RoutineModel = await _context.Routine.ToListAsync();
+            //model.SetModel = await _context.Set.ToListAsync();
+            //model.SocialModel = await _context.Social.ToListAsync();
+            //model.StatisticsModel = await _context.Statistics.ToListAsync();
+            //model.YourExerciseModel = await _context.YourExercise.ToListAsync();
+
             //model.Username = "Admin";
             //model.Password = "admin";
+
             return View(model);
         }
 
         // GET: Accounts/Details/5
-        public async Task<IActionResult> Details(int? id)
+        public async Task<IActionResult> Details(int? accountID)
         {
-            if (id == null || _context.Account == null)
-            {
-                return NotFound();
-            }
+            if (accountID == null) return NotFound(); //error checking
 
-            var account = await _context.Account
-                .FirstOrDefaultAsync(m => m.AccountID == id);
-            if (account == null)
-            {
-                return NotFound();
-            }
+            AccountDetails accountDetails = new AccountDetails();
 
-            return View(account);
+            List<Account> accountsList = await _context.Account.ToListAsync();
+            List<Statistics> statisticsList = await _context.Statistics.ToListAsync();
+            List<DaysWorkedOut> daysWorkedOutList = await _context.DaysWorkedOut.ToListAsync();
+            List<Social> socialList = await _context.Social.ToListAsync();
+
+            accountDetails.Account = accountsList.Where(a => a.AccountID == accountID).First();
+            accountDetails.Statistics = statisticsList.Where(s => s.AccountID == accountID).First();
+            accountDetails.DaysWorkedOutList = daysWorkedOutList.Where(d => d.AccountID == accountID).ToList();
+            accountDetails.Followers = socialList.Where(s => s.FollowingID == accountID).ToList().Count();
+            accountDetails.Following = socialList.Where(s => s.AccountID == accountID).ToList().Count();
+
+            if (accountDetails == null) return NotFound(); //error checking
+
+            return View(accountDetails);
         }
 
         // GET: Accounts/Create
