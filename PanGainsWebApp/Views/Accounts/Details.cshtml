@@ -6,28 +6,79 @@
 
 <div class="text-white details">
 
+    <div class="mb-3">
+        <a style="color: white; text-decoration: none; font-weight: bold" asp-area="" asp-controller="Accounts" asp-action="Index">&lt; Back</a>
+    </div>
+
     <div class="card">
-        @if (@Model.Account.ProfilePicture == null)
-        {
-            <img class="img" src="https://cdn.discordapp.com/attachments/974177010400251905/983041869086871672/unknown.png" alt="Profile Picture">
-        }
-        else
-        {
-            <img class="img" src="@Model.Account.ProfilePicture" alt="Profile Picture">
-        }
-        
-        <div class="sub-details">
-            <h2>@Model.Account.Firstname @Model.Account.Lastname</h2>
-            @if (@Model.Account.Title == null || @Model.Account.Title == "")
+        <div class="card-left">
+            <p>Account ID: @Model.Account.AccountID</p>
+            @{
+                if (!Model.Account.Private)
+                {
+                        <p class="public">Public</p>
+                }
+                else
+                {
+                        <p class="private">Private</p>
+                }
+
+                if (Model.Account.ProfilePicture == null)
+                {
+                        <img class="img" src="https://cdn.discordapp.com/attachments/974177010400251905/983041869086871672/unknown.png" alt="Profile Picture">
+                }
+                else
+                {
+                        <img class="img" src="@Model.Account.ProfilePicture" alt="Profile Picture">
+                }
+            }
+            
+            <div class="sub-details">
+                <h2 class="mb-3">@Model.Account.Firstname @Model.Account.Lastname</h2>
+                
+                @if (Model.Account.Title == null || Model.Account.Title == "")
+                {
+                    <p class="title mb-3">No Title</p>
+                }
+                else
+                {
+                    <p class="title mb-3">@Model.Account.Title</p>
+                }
+                
+                <div class="social pe-5 ps-5">
+                    <div class="social-head make-bold" >
+                        <p>Followers</p>
+                        <p>Following</p>
+                    </div>
+
+                    <div class="social-count" >
+                        <p>@Model.Followers</p>
+                        <p>@Model.Following</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        <div class="line"></div>
+
+        <div class="card-right p-5">
+            <p class="make-bold">Email</p>
+            <p class="ms-3">@Model.Account.Email</p>
+            <p class="make-bold mt-5">Description</p>
+            <p class="ms-3">@Model.Account.Description</p>
+            <p class="make-bold mt-5">Subscription</p>
+            <p class="ms-3">@Model.Account.Type</p>
+        </div>
+        <div class="notifications">
+            @if (Model.Account.Notifications)
             {
-                <p class="title">No Title</p>
+                <i class="fa-solid fa-bell"></i>
             }
             else
             {
-                <p class="title">@Model.Account.Title</p>
+                <i class="fa-regular fa-bell-slash"></i>
             }
-            <p>@Model.Account.Description</p>
-            <p>@Model.Account.Email</p>
+            
         </div>
     </div>
 

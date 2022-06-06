@@ -40,8 +40,13 @@
                             <td>@item.Email</td>
                             <td>@item.Type</td>
                             <td>
-                                <button>
+                                <button class="me-1">
                                     <a style="color: white" asp-action="Details" asp-route-accountID="@item.AccountID">
+                                        <i class="fa-solid fa-eye"></i>
+                                    </a>
+                                </button>
+                                <button class="me-1">
+                                    <a style="color: white" asp-action="Edit" asp-route-accountID="@item.AccountID">
                                         <i class="fa-solid fa-pen-to-square"></i>
                                     </a>
                                 </button>

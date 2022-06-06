@@ -1,28 +1,90 @@
 ﻿.details {
-    padding: 50px;
+    padding: 20px 40px 40px;
+}
+
+.back {
+    color: white;
+    text-decoration: none;
 }
 
 .img {
-    width: 300px;
-    height: 300px;
+    width: 250px;
+    height: 250px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
     object-fit: cover;
-    align-self: center;
-    border-radius: 50%
+    border-radius: 50%;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.5);
+}
+
+.public {
+    text-align: center;
+    color: #00c000;
+}
+
+.private {
+    text-align: center;
+    color: #de2c43;
 }
 
 .card {
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: row;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3);
     float: left;
-    width: 33.3%;
-    margin-bottom: 16px;
-    padding: 10px;
+    width: 60%;
+    padding: 32px;
     background-color: #2A2E33;
 }
 
+.card-left {
+    width: 50%;
+}
+
+.card-right {
+    width: 50%;
+}
+
 .sub-details {
-    padding: 0 16px;
+    padding: 32px 32px 16px 32px;
+}
+
+.sub-details h2 {
+    text-align: center;
 }
 
 .title {
     color: grey;
+    text-align: center;
+}
+
+.make-bold {
+    font-weight: bold;
+}
+
+.social-head {
+    display: flex;
+    justify-content: space-around
+}
+
+.social-count {
+    display: flex;
+    justify-content: space-around
+}
+
+.line {
+    position: relative;
+}
+.line:after {
+    content: '';
+    position: absolute;
+    right: 0;
+    border-right: 1px solid #cfc7c0;
+    top: 5%;
+    bottom: 5%;
+}
+
+.notifications {
+    font-size: 20px;
 }
