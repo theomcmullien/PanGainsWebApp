@@ -25,26 +25,20 @@ namespace PanGainsWebApp.Controllers
             var accountsList = await _context.Account.ToListAsync();
             if (searchAccount != null)
             {
-                accountsList = accountsList.Where(a => a.Firstname == searchAccount).ToList();
+                if (int.TryParse(searchAccount, out int s))
+                {
+                    accountsList = accountsList.Where(a => a.AccountID == s).ToList();
+                }
+                else
+                {
+                    accountsList = accountsList.Where(a => string.Format("{0} {1}", a.Firstname, a.Lastname) == searchAccount || a.Firstname == searchAccount || a.Lastname == searchAccount || a.Email == searchAccount || a.Title == searchAccount || a.Type == searchAccount).ToList();
+                }
+                
             }
 
             var model = new ListModel();
             model.AccountModel = accountsList;
-            //model.ChallengeStatsModel = await _context.ChallengeStats.ToListAsync();
-            //model.CompletedWorkoutModel = await _context.CompletedWorkout.ToListAsync();
-            //model.DaysWorkedOutModel = await _context.DaysWorkedOut.ToListAsync();
-            //model.ExerciseModel = await _context.Exercise.ToListAsync();
-            //model.FolderModel = await _context.Folder.ToListAsync();
-            //model.LeaderboardModel = await _context.Leaderboard.ToListAsync();
-            //model.RoutineModel = await _context.Routine.ToListAsync();
-            //model.SetModel = await _context.Set.ToListAsync();
-            //model.SocialModel = await _context.Social.ToListAsync();
-            //model.StatisticsModel = await _context.Statistics.ToListAsync();
-            //model.YourExerciseModel = await _context.YourExercise.ToListAsync();
-
-            //model.Username = "Admin";
-            //model.Password = "admin";
-
+            
             return View(model);
         }
 
@@ -141,33 +135,36 @@ namespace PanGainsWebApp.Controllers
         }
 
         // GET: Accounts/Delete/5
-        public async Task<IActionResult> Delete(int? id)
+        public async Task<IActionResult> Delete(int? accountID)
         {
-            if (id == null || _context.Account == null)
-            {
-                return NotFound();
-            }
+            if (accountID == null) return NotFound(); //error checking
 
-            var account = await _context.Account
-                .FirstOrDefaultAsync(m => m.AccountID == id);
-            if (account == null)
-            {
-                return NotFound();
-            }
+            AccountDetails accountDetails = new AccountDetails();
 
-            return View(account);
+            List<DaysWorkedOut> daysWorkedOutList = await _context.DaysWorkedOut.ToListAsync();
+            List<Social> socialList = await _context.Social.ToListAsync();
+
+            accountDetails.Account = await _context.Account.FirstOrDefaultAsync(a => a.AccountID == accountID);
+            accountDetails.Statistics = await _context.Statistics.FirstOrDefaultAsync(s => s.AccountID == accountID);
+            accountDetails.DaysWorkedOutList = daysWorkedOutList.Where(d => d.AccountID == accountID).ToList();
+            accountDetails.Followers = socialList.Where(s => s.FollowingID == accountID).ToList().Count();
+            accountDetails.Following = socialList.Where(s => s.AccountID == accountID).ToList().Count();
+
+            if (accountDetails == null) return NotFound(); //error checking
+
+            return View(accountDetails);
         }
 
         // POST: Accounts/Delete/5
-        [HttpPost, ActionName("Delete")]
+        [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
+        public async Task<IActionResult> DeleteConfirmed(int accountID)
         {
             if (_context.Account == null)
             {
                 return Problem("Entity set 'PanGainsWebAppContext.Account'  is null.");
             }
-            var account = await _context.Account.FindAsync(id);
+            Account account = await _context.Account.FirstOrDefaultAsync(a => a.AccountID == accountID);
             if (account != null)
             {
                 _context.Account.Remove(account);

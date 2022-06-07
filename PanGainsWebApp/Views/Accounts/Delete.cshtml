@@ -1,5 +1,147 @@
-﻿@model PanGainsWebApp.Models.ListModel
+﻿@model PanGainsWebApp.Models.AccountDetails
 @{
     ViewData["Title"] = "Accounts";
+
 }
 
+<div class="text-white details">
+
+    <div class="mb-3">
+        <a style="color: white; text-decoration: none; font-weight: bold" asp-area="" asp-controller="Accounts" asp-action="Index">&lt; Back</a>
+    </div>
+
+    <div class="row">
+
+        <div class="card card-delete">
+            <h5 class="vertical-center me-5">Are you sure you want to delete this account?</h5>
+
+            <button class="btn btn-danger">
+                <a style="color: white; text-decoration: none" asp-action="DeleteConfirmed" asp-route-accountID="@Model.Account.AccountID">
+                    <p>Delete</p>
+                </a>
+            </button>
+            
+            
+        </div>
+        
+        <div class="card card-account">
+            <div class="card-left">
+                <p>Account ID: @Model.Account.AccountID</p>
+                @{
+                    if (!Model.Account.Private)
+                    {
+                                <p class="public">Public</p>
+                    }
+                    else
+                    {
+                                <p class="private">Private</p>
+                    }
+
+                    if (Model.Account.ProfilePicture == null)
+                    {
+                                <img class="img" src="/img/account/DefaultProfile.jpg" alt="Profile Picture">
+                    }
+                    else
+                    {
+                                <img class="img" src="@Model.Account.ProfilePicture" alt="Profile Picture">
+                    }
+                }
+
+                <div class="sub-details">
+                    <h2 class="mb-3">@Model.Account.Firstname @Model.Account.Lastname</h2>
+                
+                    @if (Model.Account.Title == null || Model.Account.Title == "")
+                    {
+                        <p class="title mb-3">No Title</p>
+                    }
+                    else
+                    {
+                        <p class="title mb-3">@Model.Account.Title</p>
+                    }
+                
+                    <div class="social pe-5 ps-5">
+                        <div class="social-head make-bold" >
+                            <p>Followers</p>
+                            <p>Following</p>
+                        </div>
+
+                        <div class="social-count" >
+                            <p>@Model.Followers</p>
+                            <p>@Model.Following</p>
+                        </div>
+                    </div>
+                
+                </div>
+            </div>
+            <div class="line"></div>
+
+            <div class="card-right p-5">
+                <p class="make-bold">Email</p>
+                <p class="ms-3">@Model.Account.Email</p>
+                <p class="make-bold mt-5">Description</p>
+                <p class="ms-3">@Model.Account.Description</p>
+                <p class="make-bold mt-5">Subscription</p>
+                <p class="ms-3">@Model.Account.Type</p>
+            </div>
+            <div class="notifications">
+                @if (Model.Account.Notifications)
+                {
+                    <i class="fa-solid fa-bell"></i>
+                }
+                else
+                {
+                    <i class="fa-regular fa-bell-slash"></i>
+                }
+            
+            </div>
+        </div>
+        <div class="card card-stats">
+            
+            <h2 class="m-3">Statistics</h2>
+
+            <div class="p-4">
+                <p class="make-bold">Total Workouts</p>
+                <p class="ms-3">@Model.Statistics.TotalWorkouts</p>
+                @{
+                    TimeSpan ts = TimeSpan.FromSeconds(Model.Statistics.AvgWorkoutTime);
+                    string hours = ts.Hours.ToString();
+                    string minutes = ts.Minutes.ToString();
+
+                        <p class="make-bold">Average Workout Time</p>
+                    if (hours == "1" && minutes == "1")
+                    {
+                            <p class="ms-3">@(hours)hr @(minutes)min</p>
+                    }
+                    else if (hours == "1")
+                    {
+                            <p class="ms-3">@(hours)hr @(minutes)mins</p>
+                    }
+                    else if (minutes == "1")
+                    {
+                            <p class="ms-3">@(hours)hrs @(minutes)min</p>
+                    }
+                    else
+                    {
+                            <p class="ms-3">@(hours)hrs @(minutes)mins</p>
+                    }
+                        <p class="make-bold">Total Lifted</p>
+                    if (Model.Statistics.TotalLifted == 1)
+                    {
+                            <p class="ms-3">@string.Format("{0:n0}", Model.Statistics.TotalLifted) kg</p>
+                    }
+                    else
+                    {
+                            <p class="ms-3">@string.Format("{0:n0}", Model.Statistics.TotalLifted) kgs</p>
+                    }
+                }
+                <p class="make-bold">Average Reps</p>
+                <p class="ms-3">@Model.Statistics.AvgReps</p>
+                <p class="make-bold">Average Sets</p>
+                <p class="ms-3">@Model.Statistics.AvgSets</p>
+                <p class="make-bold">Average Challenge Position</p>
+                <p class="ms-3">@Model.Account.AverageChallengePos</p>
+            </div>
+        </div>
+    </div>
+    
+</div>
