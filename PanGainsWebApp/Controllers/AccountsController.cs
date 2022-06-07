@@ -146,6 +146,7 @@ namespace PanGainsWebApp.Controllers
 
             accountDetails.Account = await _context.Account.FirstOrDefaultAsync(a => a.AccountID == accountID);
             accountDetails.Statistics = await _context.Statistics.FirstOrDefaultAsync(s => s.AccountID == accountID);
+
             accountDetails.DaysWorkedOutList = daysWorkedOutList.Where(d => d.AccountID == accountID).ToList();
             accountDetails.Followers = socialList.Where(s => s.FollowingID == accountID).ToList().Count();
             accountDetails.Following = socialList.Where(s => s.AccountID == accountID).ToList().Count();
