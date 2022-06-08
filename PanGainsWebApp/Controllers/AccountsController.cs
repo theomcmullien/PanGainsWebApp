@@ -55,6 +55,7 @@ namespace PanGainsWebApp.Controllers
             List<Social> socialList = await _context.Social.ToListAsync();
 
             accountDetails.Account = accountsList.Where(a => a.AccountID == accountID).First();
+            accountDetails.AccountID = accountDetails.Account.AccountID;
             accountDetails.Statistics = statisticsList.Where(s => s.AccountID == accountID).First();
             accountDetails.DaysWorkedOutList = daysWorkedOutList.Where(d => d.AccountID == accountID).ToList();
             accountDetails.Followers = socialList.Where(s => s.FollowingID == accountID).ToList().Count();
@@ -145,6 +146,7 @@ namespace PanGainsWebApp.Controllers
             List<Social> socialList = await _context.Social.ToListAsync();
 
             accountDetails.Account = await _context.Account.FirstOrDefaultAsync(a => a.AccountID == accountID);
+            accountDetails.AccountID = accountDetails.Account.AccountID;
             accountDetails.Statistics = await _context.Statistics.FirstOrDefaultAsync(s => s.AccountID == accountID);
 
             accountDetails.DaysWorkedOutList = daysWorkedOutList.Where(d => d.AccountID == accountID).ToList();
@@ -157,20 +159,13 @@ namespace PanGainsWebApp.Controllers
         }
 
         // POST: Accounts/Delete/5
-        [HttpPost]
+        [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int accountID)
         {
-            if (_context.Account == null)
-            {
-                return Problem("Entity set 'PanGainsWebAppContext.Account'  is null.");
-            }
-            Account account = await _context.Account.FirstOrDefaultAsync(a => a.AccountID == accountID);
-            if (account != null)
-            {
-                _context.Account.Remove(account);
-            }
-
+            var account = await _context.Account.FirstOrDefaultAsync(a => a.AccountID == accountID);
+            _context.Account.Remove(account);
+            
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
