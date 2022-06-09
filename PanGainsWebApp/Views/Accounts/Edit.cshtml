@@ -1,5 +1,124 @@
-﻿@model PanGainsWebApp.Models.ListModel
+﻿@model PanGainsWebApp.Models.Account
 @{
     ViewData["Title"] = "Accounts";
 }
 
+<div class="text-white edit">
+    
+    <div class="mb-3">
+        <a style="color: white; text-decoration: none; font-weight: bold" asp-area="" asp-controller="Accounts" asp-action="Index">&lt; Back</a>
+    </div>
+
+    <div class="row">
+
+        <div class="card card-account">
+            <div class="card-left">
+                <p>Account ID: @Model.AccountID</p>
+                @{
+                    if (!Model.Private)
+                    {
+                                <p class="public">Public</p>
+                    }
+                    else
+                    {
+                                <p class="private">Private</p>
+                    }
+
+                    if (Model.ProfilePicture == null)
+                    {
+                                <img class="img" src="/img/account/DefaultProfile.jpg" alt="Profile Picture">
+                    }
+                    else
+                    {
+                                <img class="img" src="@Model.ProfilePicture" alt="Profile Picture">
+                    }
+                }
+
+                <div class="sub-details">
+                    <h2 class="mb-3">@Model.Firstname @Model.Lastname</h2>
+                
+                    @if (Model.Title == null || Model.Title == "")
+                    {
+                        <p class="title mb-3">No Title</p>
+                    }
+                    else
+                    {
+                        <p class="title mb-3">@Model.Title</p>
+                    }
+
+                </div>
+            </div>
+            <div class="line"></div>
+
+            <div class="card-right p-5">
+                <p class="make-bold">Email</p>
+                <p class="ms-3">@Model.Email</p>
+                <p class="make-bold mt-5">Description</p>
+                <p class="ms-3">@Model.Description</p>
+                <p class="make-bold mt-5">Subscription</p>
+                <p class="ms-3">@Model.Type</p>
+            </div>
+            <div class="notifications">
+                @if (Model.Notifications)
+                {
+                    <i class="fa-solid fa-bell"></i>
+                }
+                else
+                {
+                    <i class="fa-regular fa-bell-slash"></i>
+                }
+            
+            </div>
+        </div>
+
+        <div class="card card-form">
+            
+            <h2 class="m-3">Edit Account</h2>
+
+            <div class="p-4">
+                <form asp-action="Edit">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <input type="hidden" asp-for="AccountID" />
+                    <div class="form-group">
+                        <label asp-for="Firstname" class=""></label>
+                        <input asp-for="Firstname" class="" />
+                        <span asp-validation-for="Firstname" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Lastname" class=""></label>
+                        <input asp-for="Lastname" class="" />
+                        <span asp-validation-for="Lastname" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Email" class=""></label>
+                        <input asp-for="Email" class="" />
+                        <span asp-validation-for="Email" class="text-danger"></span>
+                    </div>
+                    <input type="hidden" asp-for="Password" />
+                    <div class="form-group">
+                        <label asp-for="Title" class=""></label>
+                        <input asp-for="Title" class="" />
+                        <span asp-validation-for="Title" class="text-danger"></span>
+                    </div>
+                    <input type="hidden" asp-for="ProfilePicture" />
+                    <div class="form-group">
+                        <label asp-for="Description" class=""></label>
+                        <input asp-for="Description" class="" />
+                        <span asp-validation-for="Description" class="text-danger"></span>
+                    </div>
+                    <input type="hidden" asp-for="Private" />
+                    <input type="hidden" asp-for="Notifications" />
+                    <input type="hidden" asp-for="AverageChallengePos" />
+                    <input type="hidden" asp-for="Type" />
+                    <input type="hidden" asp-for="Role" />
+                    <div class="form-group">
+                        <input type="submit" value="Save" class="btn btn-primary" />
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+@*   AccountID,Firstname,Lastname,Email,PasswordHash,PasswordSalt,Title,ProfilePicture,Description,Private,Notifications,AverageChallengePos,Type,Role   *@

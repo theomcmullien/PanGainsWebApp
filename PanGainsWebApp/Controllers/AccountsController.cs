@@ -87,14 +87,14 @@ namespace PanGainsWebApp.Controllers
         }
 
         // GET: Accounts/Edit/5
-        public async Task<IActionResult> Edit(int? id)
+        public async Task<IActionResult> Edit(int? accountID)
         {
-            if (id == null || _context.Account == null)
+            if (accountID == null || _context.Account == null)
             {
                 return NotFound();
             }
 
-            var account = await _context.Account.FindAsync(id);
+            var account = await _context.Account.FindAsync(accountID);
             if (account == null)
             {
                 return NotFound();
@@ -105,9 +105,9 @@ namespace PanGainsWebApp.Controllers
         // POST: Accounts/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("AccountID,Firstname,Lastname,Email,PasswordHash,PasswordSalt,Title,ProfilePicture,Description,Private,Notifications,AverageChallengePos,Type,Role")] Account account)
+        public async Task<IActionResult> Edit(int accountID, [Bind("AccountID,Firstname,Lastname,Email,Password,Title,ProfilePicture,Description,Private,Notifications,AverageChallengePos,Type,Role")] Account account)
         {
-            if (id != account.AccountID)
+            if (accountID != account.AccountID)
             {
                 return NotFound();
             }

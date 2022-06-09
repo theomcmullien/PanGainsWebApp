@@ -1,4 +1,4 @@
-﻿.details {
+﻿.edit {
     padding: 20px 40px 40px;
 }
 
@@ -33,43 +33,10 @@
     color: #de2c43;
 }
 
-.text-delete {
-    margin: 0 75px 0 0;
-    font-size: 20px;
-    font-weight: bold;
-}
-
-.button-delete {
-    padding: 10px 50px;
-    text-decoration: none;
-    border-radius: 8px;
-    border: none;
-    color: white;
-    background-color: #EA4C46;
-    transition: all 0.05s ease-in-out;
-}
-
-.button-delete:hover {
-    background-color: #D93B35;
-}
-
 .card {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3);
     padding: 32px;
     background-color: #2A2E33;
-}
-
-.card-delete {
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3);
-    padding: 0;
-    background-color: #252A3c;
-    display: flex;
-    flex-direction: row;
-    width: 60%;
-    height: 90px;
-    margin-bottom: 2%;
-    justify-content: center;
-    align-items: center;
 }
 
 .card-account {
@@ -79,7 +46,8 @@
     margin-right: 2%;
 }
 
-.card-stats {
+.card-form {
+    background-color: #252A3c;
     width: 35%;
 }
 
@@ -108,19 +76,10 @@
     font-weight: bold;
 }
 
-.social-head {
-    display: flex;
-    justify-content: space-around
-}
-
-.social-count {
-    display: flex;
-    justify-content: space-around
-}
-
 .line {
     position: relative;
 }
+
 .line:after {
     content: '';
     position: absolute;
