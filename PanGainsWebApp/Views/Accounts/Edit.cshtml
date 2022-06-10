@@ -11,26 +11,68 @@
 
     <div class="row">
 
+        <div class="card card-form">
+            
+            <h2 class="m-3">Edit Account Info</h2>
+
+            <div class="p-4">
+                <form class="form" asp-action="Edit" method="post">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <input type="hidden" asp-for="AccountID" />
+                    <div class="form-group">
+                        <label style="align-self: flex-start; font-weight: bold; padding: 10px 0" asp-for="Firstname" ></label>
+                        <input style="align-self: flex-start; width: 100%; max-width: 425px; padding: 12px; font-size: 14px; outline: none; border: 1px solid #ddd; border-radius: 4px; background: #f9f9f9;" required asp-for="Firstname" placeholder="Enter firstname" />
+                    </div>
+                    <div class="form-group">
+                        <label style="align-self: flex-start; font-weight: bold; padding: 10px 0" asp-for="Lastname" ></label>
+                        <input style="align-self: flex-start; width: 100%; max-width: 425px; padding: 12px; font-size: 14px; outline: none; border: 1px solid #ddd; border-radius: 4px; background: #f9f9f9;" required asp-for="Lastname" placeholder="Enter lastname" />
+                    </div>
+                    <div class="form-group">
+                        <label style="align-self: flex-start; font-weight: bold; padding: 10px 0" asp-for="Email" ></label>
+                        <input style="align-self: flex-start; width: 100%; max-width: 425px; padding: 12px; font-size: 14px; outline: none; border: 1px solid #ddd; border-radius: 4px; background: #f9f9f9;" required asp-for="Email" placeholder="Enter email"/>
+                    </div>
+                    <input type="hidden" asp-for="Password" />
+                    <div class="form-group">
+                        <label style="align-self: flex-start; font-weight: bold; padding: 10px 0" asp-for="Title" ></label>
+                        <input style="align-self: flex-start; width: 100%; max-width: 425px; padding: 12px; font-size: 14px; outline: none; border: 1px solid #ddd; border-radius: 4px; background: #f9f9f9;" asp-for="Title" placeholder="Enter title" />
+                    </div>
+                    <input type="hidden" asp-for="ProfilePicture" />
+                    <div class="form-group">
+                        <label style="align-self: flex-start; font-weight: bold; padding: 10px 0" asp-for="Description" ></label>
+                        <textarea style="align-self: flex-start; width: 100%; max-width: 425px; padding: 12px; font-size: 14px; outline: none; border: 1px solid #ddd; border-radius: 4px; background: #f9f9f9; resize: none; min-height: 120px" asp-for="Description" placeholder="Enter description" maxlength="500"></textarea>
+                    </div>
+                    <input type="hidden" asp-for="Private" />
+                    <input type="hidden" asp-for="Notifications" />
+                    <input type="hidden" asp-for="AverageChallengePos" />
+                    <input type="hidden" asp-for="Type" />
+                    <input type="hidden" asp-for="Role" />
+                    <div class="form-group">
+                        <input class="form-btn" type="submit" value="Save Changes" />
+                    </div>
+                </form>
+            </div>
+        </div>
+
         <div class="card card-account">
             <div class="card-left">
                 <p>Account ID: @Model.AccountID</p>
                 @{
                     if (!Model.Private)
                     {
-                                <p class="public">Public</p>
+                        <p class="public">Public</p>
                     }
                     else
                     {
-                                <p class="private">Private</p>
+                        <p class="private">Private</p>
                     }
 
                     if (Model.ProfilePicture == null)
                     {
-                                <img class="img" src="/img/account/DefaultProfile.jpg" alt="Profile Picture">
+                        <img class="img" src="/img/account/DefaultProfile.jpg" alt="Profile Picture">
                     }
                     else
                     {
-                                <img class="img" src="@Model.ProfilePicture" alt="Profile Picture">
+                        <img class="img" src="@Model.ProfilePicture" alt="Profile Picture">
                     }
                 }
 
@@ -71,54 +113,6 @@
             </div>
         </div>
 
-        <div class="card card-form">
-            
-            <h2 class="m-3">Edit Account</h2>
-
-            <div class="p-4">
-                <form asp-action="Edit">
-                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                    <input type="hidden" asp-for="AccountID" />
-                    <div class="form-group">
-                        <label asp-for="Firstname" class=""></label>
-                        <input asp-for="Firstname" class="" />
-                        <span asp-validation-for="Firstname" class="text-danger"></span>
-                    </div>
-                    <div class="form-group">
-                        <label asp-for="Lastname" class=""></label>
-                        <input asp-for="Lastname" class="" />
-                        <span asp-validation-for="Lastname" class="text-danger"></span>
-                    </div>
-                    <div class="form-group">
-                        <label asp-for="Email" class=""></label>
-                        <input asp-for="Email" class="" />
-                        <span asp-validation-for="Email" class="text-danger"></span>
-                    </div>
-                    <input type="hidden" asp-for="Password" />
-                    <div class="form-group">
-                        <label asp-for="Title" class=""></label>
-                        <input asp-for="Title" class="" />
-                        <span asp-validation-for="Title" class="text-danger"></span>
-                    </div>
-                    <input type="hidden" asp-for="ProfilePicture" />
-                    <div class="form-group">
-                        <label asp-for="Description" class=""></label>
-                        <input asp-for="Description" class="" />
-                        <span asp-validation-for="Description" class="text-danger"></span>
-                    </div>
-                    <input type="hidden" asp-for="Private" />
-                    <input type="hidden" asp-for="Notifications" />
-                    <input type="hidden" asp-for="AverageChallengePos" />
-                    <input type="hidden" asp-for="Type" />
-                    <input type="hidden" asp-for="Role" />
-                    <div class="form-group">
-                        <input type="submit" value="Save" class="btn btn-primary" />
-                    </div>
-                </form>
-            </div>
-        </div>
     </div>
 
 </div>
-
-@*   AccountID,Firstname,Lastname,Email,PasswordHash,PasswordSalt,Title,ProfilePicture,Description,Private,Notifications,AverageChallengePos,Type,Role   *@
