@@ -71,3 +71,27 @@ body {
     text-transform: uppercase;
     letter-spacing: 1px;
 }
+
+.button-site {
+    padding: 8px 20px;
+    border: 0.1rem solid white;
+    border-radius: 5px;
+    outline: none;
+    color: white;
+    cursor: pointer;
+    background-color: #14181D;
+    text-align: center;
+    text-decoration: none;
+    transition: all 0.25s ease-in;
+    transition: all 0.125s ease-out;
+}
+
+.button-site:hover {
+    color: white;
+    background: #25292E;
+}
+
+.button-site:focus {
+    color: white;
+    background: #363A3F;
+}

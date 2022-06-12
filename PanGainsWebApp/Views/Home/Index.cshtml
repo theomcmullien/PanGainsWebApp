@@ -1,18 +1,96 @@
-﻿@model PanGainsWebApp.Models.ListModel
+﻿@model PanGainsWebApp.Models.DashboardDetails
 @{
     ViewData["Title"] = "Dashboard";
 }
 
 <div class="text-white dashboard">
     <div class="cards">
-        <div class="card-top">
+        <div class="card1">
             <div class="box">
-
+                <h1>@Model.AccountsCount</h1>
+                <h3>Accounts</h3>
             </div>
             <div class="icon-case">
-
+                <img src="/img/dashboard/StandardAccount.png" />
+            </div>
+        </div>
+        <div class="card2">
+            <div class="box">
+                <h1>@Model.PremiumAccountsCount</h1>
+                <h3>Premium</h3>
+            </div>
+            <div class="icon-case">
+                <img src="/img/dashboard/PremiumAccount.png" />
+            </div>
+        </div>
+        <div class="card3">
+            <div class="box">
+                <h1>@Model.ExercisesCount</h1>
+                <h3>Exercises</h3>
+            </div>
+            <div class="icon-case">
+                <img src="/img/dashboard/Exercises.png" />
+            </div>
+        </div>
+        <div class="card4">
+            <div class="box">
+                <h1>@Model.ChallengesCount</h1>
+                <h3>Challenges</h3>
+            </div>
+            <div class="icon-case">
+                <img src="/img/dashboard/Challenges.png" />
             </div>
         </div>
     </div>
-    <div class="content-2"></div>
+    <div class="content-2">
+        <div class="new-accounts">
+            <div class="title">
+                <h2>Recently Created Accounts</h2>
+                <a class="button-site" asp-area="" asp-controller="Accounts" asp-action="Index">View All</a>
+            </div>
+            <table>
+                <tr>
+                    <th>ID</th>
+                    <th>Fullname</th>
+                    <th>Email</th>
+                    <th>Subscription</th>
+                </tr>
+                @foreach (Account a in @Model.RecentAccounts)
+                {
+                    <tr>
+                        <td>@a.AccountID</td>
+                        <td>@a.Firstname @a.Lastname</td>
+                        <td>@a.Email</td>
+                        <td>@a.Type</td>
+                    </tr>
+                }
+                
+            </table>
+        </div>
+        <div class="current-leaderboard">
+            <div class="title">
+                <h2>Leaderboard</h2>
+                <a class="button-site" asp-area="" asp-controller="Leaderboards" asp-action="Index">View All</a>
+            </div>
+            <table>
+                <tr>
+                    <th>Rank</th>
+                    <th>Fullname</th>
+                    <th>Amount</th>
+                </tr>
+                @{
+                    int count = 0;
+                    foreach (LeaderboardPosition l in @Model.LeaderboardPositions)
+                    {
+                        count++;
+                        <tr>
+                            <td>@count</td>
+                            <td>@l.Firstname @l.Lastname</td>
+                            <td>@l.Amount</td>
+                        </tr>
+                    }
+                }
+            </table>
+        </div>
+    </div>
 </div>

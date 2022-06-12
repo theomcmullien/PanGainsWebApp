@@ -10,85 +10,87 @@ using PanGainsWebApp.Models;
 
 namespace PanGainsWebApp.Controllers
 {
-    public class AdminAccountsController : Controller
+    public class ChallengesController : Controller
     {
         private readonly PanGainsWebAppContext _context;
 
-        public AdminAccountsController(PanGainsWebAppContext context)
+        public ChallengesController(PanGainsWebAppContext context)
         {
             _context = context;
         }
 
-        // GET: AdminAccounts
+        // GET: Challenges
         public async Task<IActionResult> Index()
         {
-              return _context.AdminAccount != null ? 
-                          View(await _context.AdminAccount.ToListAsync()) :
-                          Problem("Entity set 'PanGainsWebAppContext.AdminAccount'  is null.");
+              return _context.Challenges != null ? 
+                          View(await _context.Challenges.ToListAsync()) :
+                          Problem("Entity set 'PanGainsWebAppContext.Challenges'  is null.");
         }
 
-        // GET: AdminAccounts/Details/5
+        // GET: Challenges/Details/5
         public async Task<IActionResult> Details(int? id)
         {
-            if (id == null || _context.AdminAccount == null)
+            if (id == null || _context.Challenges == null)
             {
                 return NotFound();
             }
 
-            var adminAccount = await _context.AdminAccount
-                .FirstOrDefaultAsync(m => m.AdminAccountID == id);
-            if (adminAccount == null)
+            var challenges = await _context.Challenges
+                .FirstOrDefaultAsync(m => m.ChallengesID == id);
+            if (challenges == null)
             {
                 return NotFound();
             }
 
-            return View(adminAccount);
+            return View(challenges);
         }
 
-        // GET: AdminAccounts/Create
+        // GET: Challenges/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: AdminAccounts/Create
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("AdminAccountID,Username,Password")] AdminAccount adminAccount)
-        {
-            if (ModelState.IsValid)
-            {
-                _context.Add(adminAccount);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
-            }
-            return View(adminAccount);
-        }
-
-        // GET: AdminAccounts/Edit/5
-        public async Task<IActionResult> Edit(int? id)
-        {
-            if (id == null || _context.AdminAccount == null)
-            {
-                return NotFound();
-            }
-
-            var adminAccount = await _context.AdminAccount.FindAsync(id);
-            if (adminAccount == null)
-            {
-                return NotFound();
-            }
-            return View(adminAccount);
-        }
-
-        // POST: AdminAccounts/Edit/5
+        // POST: Challenges/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("AdminAccountID,Username,Password")] AdminAccount adminAccount)
+        public async Task<IActionResult> Create([Bind("ChallengesID,ChallengeName")] Challenges challenges)
         {
-            if (id != adminAccount.AdminAccountID)
+            if (ModelState.IsValid)
+            {
+                _context.Add(challenges);
+                await _context.SaveChangesAsync();
+                return RedirectToAction(nameof(Index));
+            }
+            return View(challenges);
+        }
+
+        // GET: Challenges/Edit/5
+        public async Task<IActionResult> Edit(int? id)
+        {
+            if (id == null || _context.Challenges == null)
+            {
+                return NotFound();
+            }
+
+            var challenges = await _context.Challenges.FindAsync(id);
+            if (challenges == null)
+            {
+                return NotFound();
+            }
+            return View(challenges);
+        }
+
+        // POST: Challenges/Edit/5
+        // To protect from overposting attacks, enable the specific properties you want to bind to.
+        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Edit(int id, [Bind("ChallengesID,ChallengeName")] Challenges challenges)
+        {
+            if (id != challenges.ChallengesID)
             {
                 return NotFound();
             }
@@ -97,12 +99,12 @@ namespace PanGainsWebApp.Controllers
             {
                 try
                 {
-                    _context.Update(adminAccount);
+                    _context.Update(challenges);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!AdminAccountExists(adminAccount.AdminAccountID))
+                    if (!ChallengesExists(challenges.ChallengesID))
                     {
                         return NotFound();
                     }
@@ -113,49 +115,49 @@ namespace PanGainsWebApp.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(adminAccount);
+            return View(challenges);
         }
 
-        // GET: AdminAccounts/Delete/5
+        // GET: Challenges/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
-            if (id == null || _context.AdminAccount == null)
+            if (id == null || _context.Challenges == null)
             {
                 return NotFound();
             }
 
-            var adminAccount = await _context.AdminAccount
-                .FirstOrDefaultAsync(m => m.AdminAccountID == id);
-            if (adminAccount == null)
+            var challenges = await _context.Challenges
+                .FirstOrDefaultAsync(m => m.ChallengesID == id);
+            if (challenges == null)
             {
                 return NotFound();
             }
 
-            return View(adminAccount);
+            return View(challenges);
         }
 
-        // POST: AdminAccounts/Delete/5
+        // POST: Challenges/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            if (_context.AdminAccount == null)
+            if (_context.Challenges == null)
             {
-                return Problem("Entity set 'PanGainsWebAppContext.AdminAccount'  is null.");
+                return Problem("Entity set 'PanGainsWebAppContext.Challenges'  is null.");
             }
-            var adminAccount = await _context.AdminAccount.FindAsync(id);
-            if (adminAccount != null)
+            var challenges = await _context.Challenges.FindAsync(id);
+            if (challenges != null)
             {
-                _context.AdminAccount.Remove(adminAccount);
+                _context.Challenges.Remove(challenges);
             }
             
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool AdminAccountExists(int id)
+        private bool ChallengesExists(int id)
         {
-          return (_context.AdminAccount?.Any(e => e.AdminAccountID == id)).GetValueOrDefault();
+          return (_context.Challenges?.Any(e => e.ChallengesID == id)).GetValueOrDefault();
         }
     }
 }

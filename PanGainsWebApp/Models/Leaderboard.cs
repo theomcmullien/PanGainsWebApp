@@ -4,6 +4,7 @@
     {
         [Key]
         public int LeaderboardID { get; set; }
+        public int ChallengesID { get; set; }
         [Required]
         [DataType(DataType.Date)]
         public DateTime LeaderboardDate { get; set; }

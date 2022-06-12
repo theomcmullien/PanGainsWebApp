@@ -46,13 +46,8 @@ namespace PanGainsWebApp.Migrations
                     b.Property<bool>("Notifications")
                         .HasColumnType("tinyint(1)");
 
-                    b.Property<byte[]>("PasswordHash")
-                        .IsRequired()
-                        .HasColumnType("longblob");
-
-                    b.Property<byte[]>("PasswordSalt")
-                        .IsRequired()
-                        .HasColumnType("longblob");
+                    b.Property<string>("Password")
+                        .HasColumnType("longtext");
 
                     b.Property<bool>("Private")
                         .HasColumnType("tinyint(1)");
@@ -90,6 +85,21 @@ namespace PanGainsWebApp.Migrations
                     b.HasKey("AdminAccountID");
 
                     b.ToTable("AdminAccount");
+                });
+
+            modelBuilder.Entity("PanGainsWebApp.Models.Challenges", b =>
+                {
+                    b.Property<int>("ChallengesID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<string>("ChallengeName")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.HasKey("ChallengesID");
+
+                    b.ToTable("Challenges");
                 });
 
             modelBuilder.Entity("PanGainsWebApp.Models.ChallengeStats", b =>
@@ -199,6 +209,9 @@ namespace PanGainsWebApp.Migrations
                 {
                     b.Property<int>("LeaderboardID")
                         .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<int>("ChallengesID")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("LeaderboardDate")

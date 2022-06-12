@@ -8,6 +8,8 @@ namespace PanGainsWebApp.Controllers
 {
     public class LoginController : Controller
     {
+        const int DASHBOARD_ENTRY_COUNT = 6;
+
         private readonly PanGainsWebAppContext _context;
         private readonly ILogger<LoginController> _logger;
 
@@ -38,22 +40,62 @@ namespace PanGainsWebApp.Controllers
             
             if (isAdmin)
             {
-                var model = new ListModel();
-                model.AccountModel = await _context.Account.ToListAsync();
-                model.ChallengeStatsModel = await _context.ChallengeStats.ToListAsync();
-                model.CompletedWorkoutModel = await _context.CompletedWorkout.ToListAsync();
-                model.DaysWorkedOutModel = await _context.DaysWorkedOut.ToListAsync();
-                model.ExerciseModel = await _context.Exercise.ToListAsync();
-                model.FolderModel = await _context.Folder.ToListAsync();
-                model.LeaderboardModel = await _context.Leaderboard.ToListAsync();
-                model.RoutineModel = await _context.Routine.ToListAsync();
-                model.SetModel = await _context.Set.ToListAsync();
-                model.SocialModel = await _context.Social.ToListAsync();
-                model.StatisticsModel = await _context.Statistics.ToListAsync();
-                model.YourExerciseModel = await _context.YourExercise.ToListAsync();
-                //model.Username = displayUsername;
-                //model.Password = displayPassword;
-                
+                //Change HomeController too
+
+                var accountsList = await _context.Account.ToListAsync();
+                var exercisesList = await _context.Exercise.ToListAsync();
+                var challengesList = await _context.Challenges.ToListAsync();
+                var leaderboardsList = await _context.Leaderboard.ToListAsync();
+                var challengeStatsList = await _context.ChallengeStats.ToListAsync();
+
+                DashboardDetails model = new DashboardDetails();
+
+                model.AccountsCount = accountsList.Count();
+                model.PremiumAccountsCount = accountsList.Where(a => a.Type == "Premium").ToList().Count();
+                model.ExercisesCount = exercisesList.Count();
+                model.ChallengesCount = challengesList.Count();
+
+                var recentAccounts = new List<Account>();
+                accountsList.Reverse();
+                for (int i = 0; i < DASHBOARD_ENTRY_COUNT; i++)
+                {
+                    if (accountsList[i] != null)
+                    {
+                        recentAccounts.Add(accountsList[i]);
+                    }
+                }
+                model.RecentAccounts = recentAccounts;
+
+
+                List<LeaderboardPosition> leaderboardPositions = new List<LeaderboardPosition>();
+
+                int leaderboardID = leaderboardsList.Where(l => l.LeaderboardDate.Month == DateTime.Now.Month && l.LeaderboardDate.Year == DateTime.Now.Year).Select(l => l.LeaderboardID).First();
+
+                foreach (ChallengeStats c in challengeStatsList)
+                {
+                    if (c.LeaderboardID == leaderboardID)
+                    {
+                        Account a = accountsList.Where(a => a.AccountID == c.AccountID).First();
+                        leaderboardPositions.Add(new LeaderboardPosition(a.Firstname, a.Lastname, c.ChallengeTotalReps));
+                    }
+                }
+
+                leaderboardPositions.Sort();
+                leaderboardPositions.Reverse();
+
+                List<LeaderboardPosition> topSix = new List<LeaderboardPosition>();
+                for (int i = 0; i < DASHBOARD_ENTRY_COUNT; i++)
+                {
+                    if (leaderboardPositions[i] != null)
+                    {
+                        topSix.Add(leaderboardPositions[i]);
+                    }
+
+                }
+                model.LeaderboardPositions = topSix;
+
+                //Change HomeController too
+
                 return View("/Views/Home/Index.cshtml", model);
             }
             else

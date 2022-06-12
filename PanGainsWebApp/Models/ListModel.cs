@@ -3,6 +3,7 @@
     public class ListModel
     {
         public List<Account> AccountModel { get; set; }
+        public List<Challenges> ChallengesModal { get; set; }
         public List<ChallengeStats> ChallengeStatsModel { get; set; }
         public List<CompletedWorkout> CompletedWorkoutModel { get; set; }
         public List<DaysWorkedOut> DaysWorkedOutModel { get; set; }

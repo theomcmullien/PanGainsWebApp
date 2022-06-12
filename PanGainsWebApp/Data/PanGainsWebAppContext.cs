@@ -14,6 +14,7 @@ namespace PanGainsWebApp.Data
         }
 
         public DbSet<Account>? Account { get; set; }
+        public DbSet<Challenges> Challenges { get; set; }
         public DbSet<ChallengeStats>? ChallengeStats { get; set; }
         public DbSet<CompletedWorkout>? CompletedWorkout { get; set; }
         public DbSet<DaysWorkedOut>? DaysWorkedOut { get; set; }
@@ -25,7 +26,7 @@ namespace PanGainsWebApp.Data
         public DbSet<Social>? Social { get; set; }
         public DbSet<Statistics>? Statistics { get; set; }
         public DbSet<YourExercise>? YourExercise { get; set; }
-        public DbSet<PanGainsWebApp.Models.AdminAccount>? AdminAccount { get; set; }
+        public DbSet<AdminAccount>? AdminAccount { get; set; }
 
     }
 }
