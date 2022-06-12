@@ -55,21 +55,29 @@
             {
                 <a asp-area="" asp-controller="Accounts" asp-action="Index">Accounts</a>
             }
-            if (ViewData["Title"] == "Test")
-            {
-                <a class="sidenav-selected" asp-area="" asp-controller="Home" asp-action="Index">Leaderboards</a>
-            }
-            else
-            {
-                <a asp-area="" asp-controller="Home" asp-action="Index">Leaderboards</a>
-            }
-            if (ViewData["Title"] == "Test")
+            if (ViewData["Title"] == "Exercises")
             {
                 <a class="sidenav-selected" asp-area="" asp-controller="Home" asp-action="Index">Exercises</a>
             }
             else
             {
                 <a asp-area="" asp-controller="Home" asp-action="Index">Exercises</a>
+            }
+            if (ViewData["Title"] == "Challenges")
+            {
+                <a class="sidenav-selected" asp-area="" asp-controller="Home" asp-action="Index">Challenges</a>
+            }
+            else
+            {
+                <a asp-area="" asp-controller="Home" asp-action="Index">Challenges</a>
+            }
+            if (ViewData["Title"] == "Leaderboard")
+            {
+                <a class="sidenav-selected" asp-area="" asp-controller="Home" asp-action="Index">Leaderboard</a>
+            }
+            else
+            {
+                <a asp-area="" asp-controller="Home" asp-action="Index">Leaderboard</a>
             }
         }
     </div>

@@ -1,3 +1,18 @@
 ﻿.dashboard {
     padding: 10px;
 }
+
+.cards {
+    padding: 20px 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.card-top {
+    width: 250px;
+    height: 150px;
+    background-color: #252A3c;
+    margin: 20px 10px;
+}
