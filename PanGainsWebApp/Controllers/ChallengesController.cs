@@ -33,8 +33,8 @@ namespace PanGainsWebApp.Controllers
                 return NotFound();
             }
 
-            var challenges = await _context.Challenges
-                .FirstOrDefaultAsync(m => m.ChallengesID == id);
+            var challenges = await _context.Challenges.FirstOrDefaultAsync(m => m.ChallengesID == id);
+
             if (challenges == null)
             {
                 return NotFound();
@@ -64,14 +64,15 @@ namespace PanGainsWebApp.Controllers
         }
 
         // GET: Challenges/Edit/5
-        public async Task<IActionResult> Edit(int? id)
+        public async Task<IActionResult> Edit(int? challengesID)
         {
-            if (id == null || _context.Challenges == null)
+            if (challengesID == null || _context.Challenges == null)
             {
                 return NotFound();
             }
 
-            var challenges = await _context.Challenges.FindAsync(id);
+            var challenges = await _context.Challenges.FindAsync(challengesID);
+
             if (challenges == null)
             {
                 return NotFound();
@@ -82,9 +83,9 @@ namespace PanGainsWebApp.Controllers
         // POST: Challenges/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ChallengesID,ChallengeName")] Challenges challenges)
+        public async Task<IActionResult> Edit(int challengesID, [Bind("ChallengesID,ChallengeName")] Challenges challenges)
         {
-            if (id != challenges.ChallengesID)
+            if (challengesID != challenges.ChallengesID)
             {
                 return NotFound();
             }
@@ -113,15 +114,15 @@ namespace PanGainsWebApp.Controllers
         }
 
         // GET: Challenges/Delete/5
-        public async Task<IActionResult> Delete(int? id)
+        public async Task<IActionResult> Delete(int? challengesID)
         {
-            if (id == null || _context.Challenges == null)
+            if (challengesID == null || _context.Challenges == null)
             {
                 return NotFound();
             }
 
             var challenges = await _context.Challenges
-                .FirstOrDefaultAsync(m => m.ChallengesID == id);
+                .FirstOrDefaultAsync(m => m.ChallengesID == challengesID);
             if (challenges == null)
             {
                 return NotFound();
@@ -133,13 +134,13 @@ namespace PanGainsWebApp.Controllers
         // POST: Challenges/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
+        public async Task<IActionResult> DeleteConfirmed(int challengesID)
         {
             if (_context.Challenges == null)
             {
                 return Problem("Entity set 'PanGainsWebAppContext.Challenges'  is null.");
             }
-            var challenges = await _context.Challenges.FindAsync(id);
+            var challenges = await _context.Challenges.FindAsync(challengesID);
             if (challenges != null)
             {
                 _context.Challenges.Remove(challenges);

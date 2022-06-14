@@ -44,10 +44,12 @@
     flex-direction: row;
     width: 60%;
     margin-right: 2%;
+    border-radius: 8px;
 }
 
 .card-stats {
     width: 35%;
+    border-radius: 8px;
 }
 
 .card-left {

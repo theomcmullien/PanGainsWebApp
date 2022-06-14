@@ -1,0 +1,22 @@
+﻿@model PanGainsWebApp.Models.Challenges
+@{
+    ViewData["Title"] = "Challenges";
+
+}
+
+<div class="text-white delete">
+
+    <div class="mb-3">
+        <a style="color: white; text-decoration: none; font-weight: bold" asp-area="" asp-controller="Challenges" asp-action="Index">&lt; Back</a>
+    </div>
+
+    <div class="card-delete">
+
+        <p class="text-delete">Are you sure you want to delete <strong>@Model.ChallengeName</strong> from challenges?</p>
+
+        <form asp-action="Delete" autocomplete="off">
+            <input type="hidden" asp-for="ChallengesID" />
+            <input type="submit" value="Delete" class="button-delete" />
+        </form>
+    </div>
+</div>
