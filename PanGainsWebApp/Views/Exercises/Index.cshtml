@@ -1,7 +1,38 @@
-﻿@{
+﻿@model List<PanGainsWebApp.Models.Exercise>
+@{
     ViewData["Title"] = "Exercises";
 }
 
-<div class="text-white exercises">
-    
+<div class="text-white exercises content">
+    <div class="all-exercises">
+        <div class="title">
+            <h2>Exercises</h2>
+        </div>
+        <table>
+            <tr>
+                <th>ID</th>
+                <th>Exercise</th>
+                <th>Action</th>
+            </tr>
+            @foreach (Exercise a in Model)
+            {
+                <tr>
+                    <td>@a.ExerciseID</td>
+                    <td>@a.ExerciseName</td>
+                    <td>
+                        <button class="me-1">
+                            <a style="color: white" asp-action="Edit" asp-route-exerciseID="@a.ExerciseID">
+                                <i class="fa-solid fa-pen-to-square"></i>
+                            </a>
+                        </button>
+                        <button>
+                            <a style="color: white" asp-action="Delete" asp-route-exerciseID="@a.ExerciseID">
+                                <i class="fa-solid fa-trash"></i>
+                            </a>
+                        </button>
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
 </div>

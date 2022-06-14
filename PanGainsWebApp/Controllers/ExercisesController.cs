@@ -22,9 +22,7 @@ namespace PanGainsWebApp.Controllers
         // GET: Exercises
         public async Task<IActionResult> Index()
         {
-            return _context.Exercise != null ?
-                        View(await _context.Exercise.ToListAsync()) :
-                        Problem("Entity set 'PanGainsWebAppContext.Exercise'  is null.");
+            return View(await _context.Exercise.ToListAsync());
         }
 
         // GET: Exercises/Details/5
@@ -66,14 +64,14 @@ namespace PanGainsWebApp.Controllers
         }
 
         // GET: Exercises/Edit/5
-        public async Task<IActionResult> Edit(int? id)
+        public async Task<IActionResult> Edit(int? exerciseID)
         {
-            if (id == null || _context.Exercise == null)
+            if (exerciseID == null || _context.Exercise == null)
             {
                 return NotFound();
             }
 
-            var exercise = await _context.Exercise.FindAsync(id);
+            var exercise = await _context.Exercise.FindAsync(exerciseID);
             if (exercise == null)
             {
                 return NotFound();
@@ -84,9 +82,9 @@ namespace PanGainsWebApp.Controllers
         // POST: Exercises/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ExerciseID,ExerciseName")] Exercise exercise)
+        public async Task<IActionResult> Edit(int exerciseID, [Bind("ExerciseID,ExerciseName")] Exercise exercise)
         {
-            if (id != exercise.ExerciseID)
+            if (exerciseID != exercise.ExerciseID)
             {
                 return NotFound();
             }
@@ -115,15 +113,15 @@ namespace PanGainsWebApp.Controllers
         }
 
         // GET: Exercises/Delete/5
-        public async Task<IActionResult> Delete(int? id)
+        public async Task<IActionResult> Delete(int? exerciseID)
         {
-            if (id == null || _context.Exercise == null)
+            if (exerciseID == null || _context.Exercise == null)
             {
                 return NotFound();
             }
 
             var exercise = await _context.Exercise
-                .FirstOrDefaultAsync(m => m.ExerciseID == id);
+                .FirstOrDefaultAsync(m => m.ExerciseID == exerciseID);
             if (exercise == null)
             {
                 return NotFound();
@@ -135,13 +133,13 @@ namespace PanGainsWebApp.Controllers
         // POST: Exercises/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
+        public async Task<IActionResult> DeleteConfirmed(int exerciseID)
         {
             if (_context.Exercise == null)
             {
                 return Problem("Entity set 'PanGainsWebAppContext.Exercise'  is null.");
             }
-            var exercise = await _context.Exercise.FindAsync(id);
+            var exercise = await _context.Exercise.FindAsync(exerciseID);
             if (exercise != null)
             {
                 _context.Exercise.Remove(exercise);

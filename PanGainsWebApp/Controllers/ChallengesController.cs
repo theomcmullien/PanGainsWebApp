@@ -22,9 +22,7 @@ namespace PanGainsWebApp.Controllers
         // GET: Challenges
         public async Task<IActionResult> Index()
         {
-              return _context.Challenges != null ? 
-                          View(await _context.Challenges.ToListAsync()) :
-                          Problem("Entity set 'PanGainsWebAppContext.Challenges'  is null.");
+            return View(await _context.Challenges.ToListAsync());
         }
 
         // GET: Challenges/Details/5
@@ -52,8 +50,6 @@ namespace PanGainsWebApp.Controllers
         }
 
         // POST: Challenges/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("ChallengesID,ChallengeName")] Challenges challenges)
@@ -84,8 +80,6 @@ namespace PanGainsWebApp.Controllers
         }
 
         // POST: Challenges/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("ChallengesID,ChallengeName")] Challenges challenges)

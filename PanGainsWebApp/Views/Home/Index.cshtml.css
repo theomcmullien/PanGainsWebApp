@@ -69,10 +69,10 @@
 
 table {
     padding: 10px;
+    margin-bottom: 10px;
 }
 
 th, td {
     text-align: center;
     padding: 10px;
 }
-
