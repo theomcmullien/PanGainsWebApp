@@ -8,7 +8,7 @@ namespace PanGainsWebApp.Controllers
 {
     public class LoginController : Controller
     {
-        const int DASHBOARD_ENTRY_COUNT = 6;
+        const int DASHBOARD_ENTRY_COUNT = 7;
 
         private readonly PanGainsWebAppContext _context;
         private readonly ILogger<LoginController> _logger;
