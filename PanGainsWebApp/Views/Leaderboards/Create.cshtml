@@ -1,0 +1,35 @@
+﻿@model PanGainsWebApp.Models.CreateLeaderboard
+@{
+    ViewData["Title"] = "Leaderboard";
+}
+
+<div class="text-white create">
+    <div class="mb-3">
+        <a style="color: white; text-decoration: none; font-weight: bold" asp-area="" asp-controller="Leaderboards" asp-action="Index">&lt; Back</a>
+    </div>
+
+    <div class="card card-form">
+            
+        <h2 class="title">Select Challenge</h2>
+
+        <div class="p-4">
+            <form autocomplete="off" class="form" asp-action="Create" method="post">
+                <input type="hidden" asp-for="LeaderboardID" />
+                
+                <div class="form-group">
+                    <select style="width: 100%; max-width: 425px; padding: 12px 16px; font-size: 16px; outline: none; border: 1px solid #ddd; border-radius: 4px; background: #f9f9f9;" asp-for="ChallengesID" required>
+                        @foreach (var c in Model.Challenges)
+                        {
+                            <option required value="@c.ChallengesID">@c.ChallengeName</option>
+                        }
+                    </select>
+                </div>
+                <input type="hidden" asp-for="LeaderboardDate" />
+                <input type="hidden" asp-for="TotalParticipants" />
+                <div class="mt-4 form-group">
+                    <input class="form-btn" type="submit" value="Set Challenge" />
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

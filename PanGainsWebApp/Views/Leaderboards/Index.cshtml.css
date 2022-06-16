@@ -1,3 +1,93 @@
 ﻿.leaderboard {
+    padding: 25px 10px 10px;
+}
+
+.card-row {
+    min-height: 60vh;
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+    flex-wrap: wrap;
+}
+
+.leaderboard-card {
+    min-height: 50vh;
+    flex: 1;
+    background-color: #252A3C;
+    margin: 0 25px 25px;
+    box-shadow: 1px 1px 8px 4px rgba(0, 0, 0, 0.3);
+    display: flex;
+    flex-direction: column;
+    border-radius: 8px;
+}
+
+.set-challenge-card {
+    min-height: 30vh;
+    flex: 1;
+    background-color: #252A3c;
+    margin: 0 25px 25px;
+    box-shadow: 1px 1px 8px 4px rgba(0, 0, 0, 0.3);
+    display: flex;
+    flex-direction: column;
+    border-radius: 8px;
+}
+
+.title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 25px;
+    margin-bottom: 15px;
+    border-bottom: 2px solid #999999;
+}
+
+.set-challenge-card p {
+    font-size: 22px;
+    font-weight: bold;
+    margin: 20px 0 0 40px;
+}
+
+table {
     padding: 10px;
+    margin-bottom: 10px;
+}
+
+th, td {
+    text-align: center;
+    padding: 10px;
+}
+
+.button-next {
+    padding: 8px 20px;
+    border: 0.1rem solid white;
+    border-radius: 5px;
+    outline: none;
+    color: white;
+    cursor: pointer;
+    background-color: #14181D;
+    text-align: center;
+    text-decoration: none;
+    transition: all 0.25s ease-in;
+    transition: all 0.125s ease-out;
+    margin: 20px 0 0 40px;
+}
+
+.button-next:hover {
+    color: white;
+    background: #25292E;
+}
+
+.button-next:focus {
+    color: white;
+    background: #363A3F;
+}
+
+.buttons {
+    display: flex;
+    flex-direction: row;
+    margin-top: 15px;
+}
+
+.title p {
+    font-size: 22px;
 }

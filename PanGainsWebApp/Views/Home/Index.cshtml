@@ -80,13 +80,13 @@
                 </tr>
                 @{
                     int count = 0;
-                    foreach (LeaderboardPosition l in @Model.LeaderboardPositions)
+                    foreach (LeaderboardPosition l in Model.LeaderboardPositions)
                     {
                         count++;
                         <tr>
                             <td>@count</td>
                             <td>@l.Firstname @l.Lastname</td>
-                            <td>@l.Amount</td>
+                            <td>@l.Amount reps</td>
                         </tr>
                     }
                 }

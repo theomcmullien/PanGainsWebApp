@@ -16,8 +16,7 @@
             <h2 class="m-3">Edit Account Info</h2>
 
             <div class="p-4">
-                <form class="form" asp-action="Edit" method="post">
-                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <form autocomplete="off" class="form" asp-action="Edit" method="post">
                     <input type="hidden" asp-for="AccountID" />
                     <div class="form-group">
                         <label style="align-self: flex-start; font-weight: bold; padding: 10px 0" asp-for="Firstname" ></label>

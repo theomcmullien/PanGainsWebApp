@@ -135,15 +135,16 @@ namespace PanGainsWebApp.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int exerciseID)
         {
-            if (_context.Exercise == null)
-            {
-                return Problem("Entity set 'PanGainsWebAppContext.Exercise'  is null.");
-            }
+            if (_context.Exercise == null) return Problem("Entity set 'PanGainsWebAppContext.Exercise'  is null.");
+
+            //remove YourExercise
+            IEnumerable<YourExercise> yourExerciseslist = await _context.YourExercise.ToListAsync();
+            List<YourExercise> yourExercises = yourExerciseslist.Where(y => y.ExerciseID == exerciseID).ToList();
+            if (yourExercises.Any()) foreach (YourExercise y in yourExercises) _context.YourExercise.Remove(y);
+
+            //remove Exercise
             var exercise = await _context.Exercise.FindAsync(exerciseID);
-            if (exercise != null)
-            {
-                _context.Exercise.Remove(exercise);
-            }
+            if (exercise != null) _context.Exercise.Remove(exercise);
 
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));

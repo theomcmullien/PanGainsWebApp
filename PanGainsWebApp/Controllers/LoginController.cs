@@ -67,32 +67,35 @@ namespace PanGainsWebApp.Controllers
                 model.RecentAccounts = recentAccounts;
 
 
-                List<LeaderboardPosition> leaderboardPositions = new List<LeaderboardPosition>();
-
-                int leaderboardID = leaderboardsList.Where(l => l.LeaderboardDate.Month == DateTime.Now.Month && l.LeaderboardDate.Year == DateTime.Now.Year).Select(l => l.LeaderboardID).First();
-
-                foreach (ChallengeStats c in challengeStatsList)
+                if (leaderboardsList.Count > 0)
                 {
-                    if (c.LeaderboardID == leaderboardID)
-                    {
-                        Account a = accountsList.Where(a => a.AccountID == c.AccountID).First();
-                        leaderboardPositions.Add(new LeaderboardPosition(a.Firstname, a.Lastname, c.ChallengeTotalReps));
-                    }
-                }
+                    List<LeaderboardPosition> leaderboardPositions = new List<LeaderboardPosition>();
 
-                leaderboardPositions.Sort();
-                leaderboardPositions.Reverse();
+                    int leaderboardID = leaderboardsList.Where(l => l.LeaderboardDate.Month == DateTime.Now.Month && l.LeaderboardDate.Year == DateTime.Now.Year).Select(l => l.LeaderboardID).First();
 
-                List<LeaderboardPosition> topSix = new List<LeaderboardPosition>();
-                for (int i = 0; i < DASHBOARD_ENTRY_COUNT; i++)
-                {
-                    if (leaderboardPositions[i] != null)
+                    foreach (ChallengeStats c in challengeStatsList)
                     {
-                        topSix.Add(leaderboardPositions[i]);
+                        if (c.LeaderboardID == leaderboardID)
+                        {
+                            Account a = accountsList.Where(a => a.AccountID == c.AccountID).First();
+                            leaderboardPositions.Add(new LeaderboardPosition(a.Firstname, a.Lastname, c.ChallengeTotalReps));
+                        }
                     }
 
+                    leaderboardPositions.Sort();
+                    leaderboardPositions.Reverse();
+
+                    List<LeaderboardPosition> topSix = new List<LeaderboardPosition>();
+                    for (int i = 0; i < DASHBOARD_ENTRY_COUNT; i++)
+                    {
+                        if (leaderboardPositions[i] != null)
+                        {
+                            topSix.Add(leaderboardPositions[i]);
+                        }
+
+                    }
+                    model.LeaderboardPositions = topSix;
                 }
-                model.LeaderboardPositions = topSix;
 
                 //Change HomeController too
 

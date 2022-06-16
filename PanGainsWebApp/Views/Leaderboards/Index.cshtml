@@ -1,7 +1,67 @@
-﻿@{
+﻿@model PanGainsWebApp.Models.LeaderboardDetails
+@{
     ViewData["Title"] = "Leaderboard";
 }
 
 <div class="text-white leaderboard">
-    
+    <div class="card-row">
+        <div class="leaderboard-card">
+            <div class="title">
+                @if (Model.CurrentChallengeName != null)
+                {
+                    <h2>Leaderboard</h2>
+                    <p>@Model.CurrentChallengeName</p>
+                }
+                else
+                {
+                    <h2>Leaderboard (No Challenge)</h2>
+                }
+            </div>
+            <table>
+                <tr>
+                    <th>Rank</th>
+                    <th>Fullname</th>
+                    <th>Amount</th>
+                </tr>
+                @{
+                    if (Model.LeaderboardPositions != null)
+                    {
+                        int count = 0;
+                        foreach (LeaderboardPosition l in Model.LeaderboardPositions)
+                        {
+                            count++;
+                                    <tr>
+                                        <td>@count</td>
+                                        <td>@l.Firstname @l.Lastname</td>
+                                        <td>@l.Amount reps</td>
+                                    </tr>
+                        }
+                    }
+                }
+            </table>
+        </div>
+        <div class="set-challenge-card">
+            <div class="title">
+                <h2>Next Months Challenge</h2>
+            </div>
+            @if (Model.LeaderboardID != 0)
+            {
+                <p>@Model.NextChallengeName</p>
+                <div class="buttons">
+                    <button class="button-next">
+                        <a style="color: white; text-decoration: none" asp-action="Delete" asp-route-leaderboardID="@Model.LeaderboardID">Remove Challenge</a>
+                    </button>
+                </div>
+            }
+            else
+            {
+                <p>No Challenge Set</p>
+                <div class="buttons">
+                    <button class="button-next">
+                        <a style="color: white; text-decoration: none" asp-action="Create">Create Challenge</a>
+                    </button>
+                </div>
+            }
+        </div>
+    </div>
 </div>
