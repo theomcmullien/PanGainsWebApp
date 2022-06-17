@@ -1,0 +1,28 @@
+﻿@model PanGainsWebApp.Models.CreateChallenge
+@{
+    ViewData["Title"] = "Challenges";
+}
+
+<div class="text-white create">
+    <div class="mb-3">
+        <a style="color: white; text-decoration: none; font-weight: bold" asp-area="" asp-controller="Challenges" asp-action="Index">&lt; Back</a>
+    </div>
+
+    <div class="card card-form">
+            
+        <h2 class="title">Select Challenge</h2>
+
+        <div class="p-4">
+            <form autocomplete="off" class="form" asp-action="Create">
+                
+                <div class="form-group">
+                    <label style="align-self: flex-start; font-weight: bold; padding: 10px 0" asp-for="ChallengeName" ></label>
+                    <input autofocus style="align-self: flex-start; width: 100%; max-width: 425px; padding: 12px; font-size: 14px; outline: none; border: 1px solid #ddd; border-radius: 4px; background: #f9f9f9;" required asp-for="ChallengeName" placeholder="Enter challenge" />
+                </div>
+                <div class="mt-4 form-group">
+                    <input class="form-btn" type="submit" value="Add" />
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

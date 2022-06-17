@@ -52,8 +52,18 @@ namespace PanGainsWebApp.Controllers
         // POST: Exercises/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ExerciseID,ExerciseName")] Exercise exercise)
+        public async Task<IActionResult> Create([Bind("ExerciseName")] CreateExercise cE)
         {
+            var exercisesList = await _context.Exercise.ToListAsync();
+
+            int maxExerciseID = 0;
+            if (exercisesList.Count > 0) foreach (var e in exercisesList) if (e.ExerciseID > maxExerciseID) maxExerciseID = e.ExerciseID;
+            else maxExerciseID = 1;
+
+            Exercise exercise = new Exercise();
+            exercise.ExerciseID = maxExerciseID + 1;
+            exercise.ExerciseName = cE.ExerciseName;
+
             if (ModelState.IsValid)
             {
                 _context.Add(exercise);

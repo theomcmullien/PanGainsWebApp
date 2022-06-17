@@ -1,0 +1,57 @@
+﻿.create {
+    padding: 20px 40px 40px;
+}
+
+.back {
+    color: white;
+    text-decoration: none;
+}
+
+.card {
+    box-shadow: 1px 1px 8px 4px rgba(0, 0, 0, 0.3);
+    padding: 32px;
+    background-color: #252A3C;
+}
+
+.card-form {
+    background-color: #252A3c;
+    width: 35%;
+    margin-right: 2%;
+    border-radius: 8px;
+}
+
+.title {
+    margin: 20px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+
+.form-btn {
+    background-color: #14181D;
+    outline: none;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    padding: 10px 16px;
+    margin: 20px 0 0;
+    color: white;
+    border: solid 1px white;
+    transition: all 0.25s ease-in;
+    transition: all 0.125s ease-out;
+
+    align-self: flex-start;
+    width: 100%;
+    max-width: 425px;
+}
+
+.form-btn:hover {
+    background: #25292E;
+}
+
+.form-btn:focus {
+    background: #363A3F;
+}

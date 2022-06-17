@@ -52,8 +52,18 @@ namespace PanGainsWebApp.Controllers
         // POST: Challenges/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ChallengesID,ChallengeName")] Challenges challenges)
+        public async Task<IActionResult> Create([Bind("ChallengeName")] CreateChallenge cC)
         {
+            var challengesList = await _context.Challenges.ToListAsync();
+
+            int maxChallengesID = 0;
+            if (challengesList.Count > 0) foreach (var c in challengesList) if (c.ChallengesID > maxChallengesID) maxChallengesID = c.ChallengesID;
+            else maxChallengesID = 1;
+
+            Challenges challenges = new Challenges();
+            challenges.ChallengesID = maxChallengesID + 1;
+            challenges.ChallengeName = cC.ChallengeName;
+
             if (ModelState.IsValid)
             {
                 _context.Add(challenges);
