@@ -10,12 +10,12 @@
 
     <div class="card card-form">
             
-        <h2 class="title">Select Challenge</h2>
+        <h2 class="title">Add Exercise</h2>
 
         <div class="p-4">
             <form autocomplete="off" class="form" asp-action="Create">
                 <div class="form-group">
-                    <label style="align-self: flex-start; font-weight: bold; padding: 10px 0" asp-for="ExerciseName" ></label>
+                    <label style="align-self: flex-start; font-weight: bold; padding: 10px 0" asp-for="ExerciseName" >Exercise Name</label>
                     <input autofocus style="align-self: flex-start; width: 100%; max-width: 425px; padding: 12px; font-size: 14px; outline: none; border: 1px solid #ddd; border-radius: 4px; background: #f9f9f9;" required asp-for="ExerciseName" placeholder="Enter exercise" />
                 </div>
                 <div class="mt-4 form-group">
