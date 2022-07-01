@@ -57,13 +57,16 @@ namespace PanGainsWebApp.Controllers
 
                 var recentAccounts = new List<Account>();
                 accountsList.Reverse();
-                for (int i = 0; i < DASHBOARD_ENTRY_COUNT; i++)
+
+                if (recentAccounts.Count > DASHBOARD_ENTRY_COUNT)
                 {
-                    if (accountsList[i] != null)
-                    {
-                        recentAccounts.Add(accountsList[i]);
-                    }
+                    for (int i = 0; i < recentAccounts.Count; i++) recentAccounts.Add(accountsList[i]);
                 }
+                else
+                {
+                    for (int i = 0; i < DASHBOARD_ENTRY_COUNT; i++) recentAccounts.Add(accountsList[i]);
+                }
+                
                 model.RecentAccounts = recentAccounts;
 
 
@@ -85,16 +88,18 @@ namespace PanGainsWebApp.Controllers
                     leaderboardPositions.Sort();
                     leaderboardPositions.Reverse();
 
-                    List<LeaderboardPosition> topSix = new List<LeaderboardPosition>();
-                    for (int i = 0; i < DASHBOARD_ENTRY_COUNT; i++)
-                    {
-                        if (leaderboardPositions[i] != null)
-                        {
-                            topSix.Add(leaderboardPositions[i]);
-                        }
+                    List<LeaderboardPosition> top = new List<LeaderboardPosition>();
 
+                    if (top.Count > DASHBOARD_ENTRY_COUNT)
+                    {
+                        for (int i = 0; i < top.Count; i++) top.Add(leaderboardPositions[i]);
                     }
-                    model.LeaderboardPositions = topSix;
+                    else
+                    {
+                        for (int i = 0; i < DASHBOARD_ENTRY_COUNT; i++) top.Add(leaderboardPositions[i]);
+                    }
+
+                    model.LeaderboardPositions = top;
                 }
 
                 //Change HomeController too

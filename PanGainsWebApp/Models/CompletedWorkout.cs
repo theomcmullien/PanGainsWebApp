@@ -9,9 +9,9 @@
         [Required]
         public int RoutineID { get; set; }
         [Required]
-        public DateTime DateCompleted { get; set; }
+        public string? DateCompleted { get; set; }
         [Required]
-        public int Duration { get; set; }
+        public string? Duration { get; set; }
         [Required]
         public double TotalWeightLifted { get; set; }
     }

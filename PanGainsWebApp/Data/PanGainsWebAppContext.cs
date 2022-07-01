@@ -27,6 +27,7 @@ namespace PanGainsWebApp.Data
         public DbSet<Statistics>? Statistics { get; set; }
         public DbSet<YourExercise>? YourExercise { get; set; }
         public DbSet<AdminAccount>? AdminAccount { get; set; }
+        public DbSet<UserAuth>? UserAuth { get; set; }
 
     }
 }

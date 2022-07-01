@@ -12,6 +12,7 @@ namespace PanGainsWebApp.Models
         public string? Lastname { get; set; }
         [Required]
         public string? Email { get; set; }
+        [Required]
         public string? Password { get; set; }
         //[Required]
         //public byte[]? PasswordHash { get; set; }
@@ -28,7 +29,8 @@ namespace PanGainsWebApp.Models
         public int AverageChallengePos { get; set; }
         [Required]
         public string? Type { get; set; }
-        public string? Role { get; set; }
+        public string? Role { get; set; } //JWT Signing Claims
+        public string? MessageToken { get; set; }
 
     }
 }
